@@ -7,7 +7,7 @@ import '../../../shared/classes/classes.dart';
 import '../../../shared/extensions.dart';
 import '../../../shared/views/adaptive_image_card.dart';
 import '../../../shared/views/views.dart';
-import 'playlist_songs.dart';
+import 'trending_projects.dart';
 
 class PlaylistScreen extends StatelessWidget {
   const PlaylistScreen({required this.playlist, super.key});
@@ -40,7 +40,7 @@ class PlaylistScreen extends StatelessWidget {
             ],
           ),
           body: ArticleContent(
-            child: PlaylistSongs(
+            child: TrendingProjects(
               playlist: playlist,
               constraints: constraints,
             ),
@@ -115,7 +115,7 @@ class PlaylistScreen extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: ArticleContent(
-                child: PlaylistSongs(
+                child: TrendingProjects(
                   playlist: playlist,
                   constraints: constraints,
                 ),

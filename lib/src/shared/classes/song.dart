@@ -1,4 +1,5 @@
 import './classes.dart';
+import 'package:intl/intl.dart';
 
 class Song {
   final String artist;
@@ -14,4 +15,8 @@ class Song {
     this.date,
     this.description,
   );
+}
+
+extension SongEx on Song {
+  String get formattedDate => DateFormat("MMM dd").format(date);
 }

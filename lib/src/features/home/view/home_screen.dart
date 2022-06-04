@@ -5,7 +5,7 @@ import '../../../shared/classes/classes.dart';
 import '../../../shared/extensions.dart';
 import '../../../shared/providers/providers.dart';
 import '../../../shared/views/views.dart';
-import '../../playlists/view/playlist_songs.dart';
+import '../../playlists/view/trending_projects.dart';
 import 'view.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 8, bottom: 8),
+                                    const EdgeInsets.only(bottom: 8),
                                 child: Text(
                                   'Trending',
                                   style: context.titleLarge,
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               LayoutBuilder(
                                 builder: (context, constraints) =>
-                                    PlaylistSongs(
+                                    TrendingProjects(
                                   playlist: topSongs,
                                   constraints: constraints,
                                 ),
