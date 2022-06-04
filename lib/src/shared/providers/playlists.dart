@@ -4,7 +4,6 @@ import 'package:faker/faker.dart';
 
 import '../classes/classes.dart';
 import '../extensions.dart';
-import 'providers.dart';
 
 class PlaylistsProvider {
   List<Playlist> get playlists => _randomPlaylists;

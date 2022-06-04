@@ -1,8 +1,6 @@
 import 'package:faker/faker.dart';
 
-import './artists.dart';
 import '../classes/classes.dart';
-import '../extensions.dart';
 
 class SongsProvider {
   static SongsProvider get shared => SongsProvider();
