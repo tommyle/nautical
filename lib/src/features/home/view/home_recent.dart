@@ -25,6 +25,7 @@ class HomeRecent extends StatelessWidget {
           itemCount: playlists.length,
           itemBuilder: (context, index) {
             final playlist = playlists[index];
+
             return Clickable(
               child: Padding(
                 padding: const EdgeInsets.only(right: 25),

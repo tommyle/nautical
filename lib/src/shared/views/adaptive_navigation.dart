@@ -1,39 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:myartist/src/shared/extensions.dart';
 
 class AdaptiveNavigation extends StatelessWidget {
-  const AdaptiveNavigation({
-    super.key,
-    required this.destinations,
-    required this.selectedIndex,
-    required this.onDestinationSelected,
-    required this.child,
-  });
+  const AdaptiveNavigation(
+      {super.key,
+      required this.destinations,
+      required this.selectedIndex,
+      required this.onDestinationSelected,
+      required this.child,
+      this.logo = const SizedBox()});
 
   final List<NavigationDestination> destinations;
   final int selectedIndex;
   final void Function(int index) onDestinationSelected;
   final Widget child;
+  final Widget logo;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, dimens) {
+      builder: (context, constraints) {
         // Tablet Layout
-        if (dimens.maxWidth >= 600) {
+        if (constraints.isDesktop) {
           return Scaffold(
             body: Row(
               children: [
-                NavigationRail(
-                  extended: dimens.maxWidth >= 800,
-                  minExtendedWidth: 180,
-                  destinations: destinations
-                      .map((e) => NavigationRailDestination(
-                            icon: e.icon,
-                            label: Text(e.label),
-                          ))
-                      .toList(),
-                  selectedIndex: selectedIndex,
-                  onDestinationSelected: onDestinationSelected,
+                Column(
+                  children: [
+                    logo,
+                    Flexible(
+                      child: NavigationRail(
+                        extended: true,
+                        minExtendedWidth: 180,
+                        destinations: destinations
+                            .map((e) => NavigationRailDestination(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 4,
+                                  ),
+                                  icon: e.icon,
+                                  label: Text(e.label),
+                                ))
+                            .toList(),
+                        selectedIndex: selectedIndex,
+                        onDestinationSelected: onDestinationSelected,
+                      ),
+                    ),
+                  ],
                 ),
                 Expanded(child: child),
               ],

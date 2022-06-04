@@ -19,7 +19,7 @@ class _OutlinedCardState extends State<OutlinedCard> {
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = BorderRadius.circular(_hovered ? 20 : 8);
+    final borderRadius = BorderRadius.circular(8);
     const animationCurve = Curves.easeInOut;
     return MouseRegion(
       onEnter: (_) {

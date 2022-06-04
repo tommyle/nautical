@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart' as go;
+import 'package:myartist/src/shared/views/logo.dart';
 
 import '../playback/bloc/bloc.dart';
 import '../router.dart' as router;
@@ -42,6 +43,7 @@ class RootLayout extends StatelessWidget {
               .toList(),
           selectedIndex: currentIndex,
           onDestinationSelected: onSelected,
+          logo: Logo(),
           child: Column(
             children: [
               Expanded(

@@ -17,7 +17,7 @@ final playlistsProvider = PlaylistsProvider();
 
 const List<NavigationDestination> destinations = [
   NavigationDestination(
-    label: 'Home',
+    label: 'Overview',
     icon: Icon(Icons.home),
     route: '/',
   ),

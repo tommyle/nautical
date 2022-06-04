@@ -11,7 +11,7 @@ class ArtistsProvider {
           id: 'jmo',
           name: 'Jessie Morrison',
           image: MyArtistImage(
-            image: 'assets/images/artists/woman.jpeg',
+            image: 'assets/images/collections/monkez/monkez_1.gif',
             sourceLink: 'https://unsplash.com/photos/w8wpFqiMpW8',
             sourceName: 'Daniel Monteiro',
           ),

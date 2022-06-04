@@ -19,7 +19,7 @@ class HomeHighlight extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
-                    'assets/images/news/concert.jpeg',
+                    'assets/images/banner.jpeg',
                     fit: BoxFit.cover,
                   ),
                 ),

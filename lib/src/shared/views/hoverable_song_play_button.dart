@@ -24,7 +24,7 @@ class HoverableSongPlayButton extends StatelessWidget {
     return HoverToggle(
       hoverChild: Center(
         child: GestureDetector(
-          child: const Icon(Icons.play_arrow),
+          child: const Icon(Icons.favorite),
           onTap: () => BlocProvider.of<PlaybackBloc>(context).add(
             PlaybackEvent.changeSong(song),
           ),

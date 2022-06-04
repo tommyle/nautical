@@ -18,22 +18,25 @@ class PlaylistSongs extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdaptiveTable<Song>(
       items: playlist.songs,
-      breakpoint: 450,
+      breakpoint: 1024,
       columns: const [
         DataColumn(
           label: Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text('#'),
+            child: Text('Upvotes'),
           ),
         ),
         DataColumn(
-          label: Text('Title'),
+          label: Text('Project name'),
         ),
         DataColumn(
-          label: Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: Text('Length'),
-          ),
+          label: Text('When'),
+        ),
+        DataColumn(
+          label: Text('Mint Link'),
+        ),
+        DataColumn(
+          label: Text('Description'),
         ),
       ],
       rowBuilder: (context, index) => DataRow.byIndex(
@@ -58,11 +61,34 @@ class PlaylistSongs extends StatelessWidget {
                 child: ClippedImage(playlist.songs[index].image.image),
               ),
               const SizedBox(width: 10),
-              Expanded(child: Text(playlist.songs[index].title)),
+              Text(playlist.songs[index].title),
             ]),
           ),
           DataCell(
-            Text(playlist.songs[index].length.toHumanizedString()),
+            SizedBox(
+              width: 100,
+              child: Text('June 04, 07:00'),
+            ),
+          ),
+          DataCell(
+            SizedBox(
+              width: 120,
+              child: Text(
+                'Check on Twitter',
+                style: TextStyle(
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ),
+          DataCell(
+            SizedBox(
+              width: 300,
+              child: Text(
+                'Description of the drop goes here',
+                maxLines: 2,
+              ),
+            ),
           ),
         ],
       ),
