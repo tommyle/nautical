@@ -53,12 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       const HomeHighlight(),
-                      LayoutBuilder(
-                        builder: (context, constraints) => HomeArtists(
-                          artists: artists,
-                          constraints: constraints,
-                        ),
-                      ),
                     ],
                   ),
                 ),
