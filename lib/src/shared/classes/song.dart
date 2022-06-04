@@ -1,10 +1,17 @@
 import './classes.dart';
 
 class Song {
-  final Artist artist;
+  final String artist;
   final String title;
-  final Duration length;
   final MyArtistImage image;
+  final DateTime date;
+  final String description;
 
-  const Song(this.title, this.artist, this.length, this.image);
+  const Song(
+    this.title,
+    this.artist,
+    this.image,
+    this.date,
+    this.description,
+  );
 }

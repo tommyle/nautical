@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../shared/classes/classes.dart';
-import '../../../shared/extensions.dart';
-import '../../../shared/playback/bloc/bloc.dart';
 import '../../../shared/views/image_clipper.dart';
 import '../../../shared/views/views.dart';
 
@@ -94,12 +91,10 @@ class PlaylistSongs extends StatelessWidget {
       ),
       itemBuilder: (song, index) {
         return ListTile(
-          onTap: () => BlocProvider.of<PlaybackBloc>(context).add(
-            PlaybackEvent.changeSong(song),
-          ),
+          onTap: () => {},
           leading: ClippedImage(song.image.image),
           title: Text(song.title),
-          subtitle: Text(song.length.toHumanizedString()),
+          subtitle: Text(song.date.toString()),
         );
       },
     );

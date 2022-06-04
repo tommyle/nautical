@@ -21,5 +21,5 @@ class Artist {
   final List<News> news;
 
   List<RankedSong> get songs =>
-      SongsProvider.shared.songs.where((song) => song.artist.id == id).toList();
+      SongsProvider.shared.songs.where((song) => song.artist == id).toList();
 }

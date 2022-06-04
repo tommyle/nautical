@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:collection/collection.dart';
-import 'package:english_words/english_words.dart';
+import 'package:faker/faker.dart';
 
 import '../classes/classes.dart';
 import '../extensions.dart';
@@ -14,39 +14,39 @@ class PlaylistsProvider {
   static List<MyArtistImage> images() {
     return [
       const MyArtistImage(
-          image: 'assets/images/playlists/favorite.jpg',
+          image: 'assets/images/collections/akumu/akumu_1.png',
           sourceLink: 'https://unsplash.com/photos/60GsdOMRFGc',
           sourceName: 'Karsten Winegeart'),
       const MyArtistImage(
-          image: 'assets/images/playlists/austin.jpg',
+          image: 'assets/images/collections/boki/boki_1.png',
           sourceLink: 'https://unsplash.com/photos/AlBgcDfDG_s',
           sourceName: 'Carlos Alfonso'),
       const MyArtistImage(
-          image: 'assets/images/playlists/reading.jpg',
+          image: 'assets/images/collections/cheebs/cheebs_1.png',
           sourceLink: 'https://unsplash.com/photos/wkgv7I2VTzM',
           sourceName: 'Alexandra Fuller'),
       const MyArtistImage(
-          image: 'assets/images/playlists/workout.jpg',
+          image: 'assets/images/collections/chums/chums_1.png',
           sourceLink: 'https://unsplash.com/photos/CnEEF5eJemQ',
           sourceName: 'Karsten Winegeart'),
       const MyArtistImage(
-          image: 'assets/images/playlists/calm.jpg',
+          image: 'assets/images/collections/dragonz/dragonz_1.png',
           sourceLink: 'https://unsplash.com/photos/NTyBbu66_SI',
           sourceName: 'Jared Rice'),
       const MyArtistImage(
-          image: 'assets/images/playlists/coffee.jpg',
+          image: 'assets/images/collections/flower/flower_1.png',
           sourceLink: 'https://unsplash.com/photos/XOhI_kW_TaM',
           sourceName: 'Nathan Dumlao'),
       const MyArtistImage(
-          image: 'assets/images/playlists/piano.jpg',
+          image: 'assets/images/collections/monkez/monkez_1.gif',
           sourceLink: 'https://unsplash.com/photos/BhfE1IgcsA8',
           sourceName: 'Jordan Whitfield'),
       const MyArtistImage(
-          image: 'assets/images/playlists/studying.jpg',
+          image: 'assets/images/collections/akumu/akumu_2.png',
           sourceLink: 'https://unsplash.com/photos/-moT-Deiw1M',
           sourceName: 'Humble Lamb'),
       const MyArtistImage(
-          image: 'assets/images/playlists/jazz.jpg',
+          image: 'assets/images/collections/boki/boki_2.png',
           sourceLink: 'https://unsplash.com/photos/BY_KyTwTKq4',
           sourceName: 'dimitri.photography'),
     ];
@@ -59,8 +59,8 @@ class PlaylistsProvider {
   static Playlist randomPlaylist({int numSongs = 15}) {
     return Playlist(
       id: randomId(),
-      title: generateRandomString(max(2, Random().nextInt(4))),
-      description: generateRandomString(Random().nextInt(25)),
+      title: faker.company.name(),
+      description: faker.lorem.sentence(),
       songs: List.generate(numSongs, (index) => randomSong()),
       cover: images()[Random().nextInt(images().length - 1)],
     );
@@ -74,10 +74,11 @@ class PlaylistsProvider {
 
   static Song randomSong() {
     return Song(
-      generateRandomString(2),
-      ArtistsProvider.shared.randomArtist,
-      generateRandomSongLength(),
+      faker.company.name(),
+      faker.person.name(),
       images()[Random().nextInt(images().length)],
+      faker.date.dateTime(),
+      faker.lorem.sentence(),
     );
   }
 
@@ -87,11 +88,6 @@ class PlaylistsProvider {
 
 String randomId() {
   return Random().nextInt(1000000).toString();
-}
-
-String generateRandomString(int wordCount) {
-  final randomWords = generateWordPairs().take((wordCount).floor());
-  return randomWords.join(' ');
 }
 
 Duration generateRandomSongLength() {

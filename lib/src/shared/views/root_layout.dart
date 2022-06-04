@@ -1,13 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart' as go;
 import 'package:myartist/src/shared/views/logo.dart';
 
-import '../playback/bloc/bloc.dart';
 import '../router.dart' as router;
 import 'adaptive_navigation.dart';
-import 'views.dart';
 
 class RootLayout extends StatelessWidget {
   const RootLayout({
@@ -23,41 +20,35 @@ class RootLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<PlaybackBloc>(context);
-    return BlocBuilder<PlaybackBloc, PlaybackState>(
-      bloc: bloc,
-      builder: (context, state) => LayoutBuilder(builder: (context, dimens) {
-        void onSelected(int index) {
-          final destination = router.destinations[index];
-          go.GoRouter.of(context).go(destination.route);
-        }
+    return LayoutBuilder(builder: (context, dimens) {
+      void onSelected(int index) {
+        final destination = router.destinations[index];
+        go.GoRouter.of(context).go(destination.route);
+      }
 
-        final current = state.songWithProgress;
-        return AdaptiveNavigation(
-          key: _navigationRailKey,
-          destinations: router.destinations
-              .map((e) => NavigationDestination(
-                    icon: e.icon,
-                    label: e.label,
-                  ))
-              .toList(),
-          selectedIndex: currentIndex,
-          onDestinationSelected: onSelected,
-          logo: Logo(),
-          child: Column(
-            children: [
-              Expanded(
-                child: _Switcher(
-                  key: _switcherKey,
-                  child: child,
-                ),
+      return AdaptiveNavigation(
+        key: _navigationRailKey,
+        destinations: router.destinations
+            .map((e) => NavigationDestination(
+                  icon: e.icon,
+                  label: e.label,
+                ))
+            .toList(),
+        selectedIndex: currentIndex,
+        onDestinationSelected: onSelected,
+        logo: Logo(),
+        child: Column(
+          children: [
+            Expanded(
+              child: _Switcher(
+                key: _switcherKey,
+                child: child,
               ),
-              if (current != null) const BottomBar(),
-            ],
-          ),
-        );
-      }),
-    );
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
 

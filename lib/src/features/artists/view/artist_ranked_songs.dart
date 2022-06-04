@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../shared/classes/classes.dart';
-import '../../../shared/extensions.dart';
-import '../../../shared/playback/bloc/bloc.dart';
 import '../../../shared/views/image_clipper.dart';
 import '../../../shared/views/views.dart';
 
@@ -19,14 +15,11 @@ class ArtistRankedSongs extends StatelessWidget {
       breakpoint: 450,
       itemBuilder: (song, index) {
         return ListTile(
-          leading: ClippedImage(song.image.image),
-          title: Text(song.title),
-          subtitle: Text(song.length.toHumanizedString()),
-          trailing: Text(song.ranking.toString()),
-          onTap: () => BlocProvider.of<PlaybackBloc>(context).add(
-            PlaybackEvent.changeSong(song),
-          ),
-        );
+            leading: ClippedImage(song.image.image),
+            title: Text(song.title),
+            subtitle: Text(song.date.toString()),
+            trailing: Text(song.ranking.toString()),
+            onTap: () => {});
       },
       columns: const [
         DataColumn(
@@ -66,7 +59,7 @@ class ArtistRankedSongs extends StatelessWidget {
           ]),
         ),
         DataCell(
-          Text(song.length.toHumanizedString()),
+          Text(song.date.toString()),
         ),
       ]),
     );
