@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nautical/src/shared/extensions.dart';
 
 import '../../../shared/classes/classes.dart';
 import '../../../shared/providers/providers.dart';
@@ -17,7 +18,11 @@ class PlaylistHomeScreen extends StatelessWidget {
         return Scaffold(
           primary: false,
           appBar: AppBar(
-            title: const Text('PLAYLISTS'),
+            centerTitle: false,
+            title: Text(
+              'Projects',
+              style: context.displaySmall,
+            ),
             toolbarHeight: kToolbarHeight * 2,
           ),
           body: Column(

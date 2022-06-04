@@ -19,7 +19,7 @@ class Logo extends StatelessWidget {
             width: 10,
           ),
           Text(
-            "Anchor",
+            "Nautical",
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,

@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           body: SingleChildScrollView(
             child: AdaptiveColumn(
+              margin: 0,
               children: [
                 AdaptiveContainer(
                   columnSpan: 12,
@@ -91,8 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(bottom: 8),
+                                padding: const EdgeInsets.only(bottom: 8),
                                 child: Text(
                                   'Trending',
                                   style: context.titleLarge,

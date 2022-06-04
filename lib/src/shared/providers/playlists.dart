@@ -3,12 +3,11 @@ import 'package:collection/collection.dart';
 import 'package:faker/faker.dart';
 
 import '../classes/classes.dart';
-import '../extensions.dart';
 
 class PlaylistsProvider {
   List<Playlist> get playlists => _randomPlaylists;
-  Playlist get newReleases => randomPlaylist(numSongs: 10);
-  Playlist get topSongs => randomPlaylist(numSongs: 10);
+  Playlist get newReleases => randomPlaylist(numSongs: 20);
+  Playlist get topSongs => randomPlaylist(numSongs: 20);
 
   static List<MyArtistImage> images() {
     return [
@@ -57,7 +56,7 @@ class PlaylistsProvider {
 
   static Playlist randomPlaylist({int numSongs = 15}) {
     return Playlist(
-      id: randomId(),
+      id: faker.guid.guid(),
       title: faker.company.name(),
       description: faker.lorem.sentence(),
       songs: List.generate(numSongs, (index) => randomSong()),
@@ -83,24 +82,4 @@ class PlaylistsProvider {
 
   static final List<Playlist> _randomPlaylists =
       List.generate(10, (index) => randomLengthPlaylist());
-}
-
-String randomId() {
-  return Random().nextInt(1000000).toString();
-}
-
-Duration generateRandomSongLength() {
-  Random rand = Random();
-
-  int minute = rand.nextInt(5);
-
-  int second = rand.nextInt(60);
-
-  String secondStr = second.toString();
-
-  if (second < 10) {
-    secondStr = secondStr.padLeft(2, '0');
-  }
-
-  return '$minute : $secondStr'.toDuration();
 }

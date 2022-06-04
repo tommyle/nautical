@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myartist/src/shared/views/clickable.dart';
+import 'package:nautical/src/shared/views/clickable.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LinkText extends StatelessWidget {

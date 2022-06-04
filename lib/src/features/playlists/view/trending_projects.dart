@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myartist/src/shared/views/link_text.dart';
+import 'package:nautical/src/shared/views/link_text.dart';
 
 import '../../../shared/classes/classes.dart';
 import '../../../shared/views/image_clipper.dart';
@@ -19,6 +19,9 @@ class TrendingProjects extends StatelessWidget {
       breakpoint: 1024,
       columns: const [
         DataColumn(
+          label: Text('Rank'),
+        ),
+        DataColumn(
           label: Text('Project name'),
         ),
         DataColumn(
@@ -37,6 +40,9 @@ class TrendingProjects extends StatelessWidget {
         return DataRow.byIndex(
           index: index,
           cells: [
+            DataCell(
+              Text('${index + 1}'),
+            ),
             DataCell(
               Row(children: [
                 Padding(
@@ -84,7 +90,7 @@ class TrendingProjects extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: LinkText(
-              linkTitle: '${song.title}' ,
+              linkTitle: '${song.title}',
               linkAddress: 'https://www.fluttertemplates.com',
             ),
           ),

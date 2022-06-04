@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myartist/src/shared/extensions.dart';
+import 'package:nautical/src/shared/extensions.dart';
 
 class AdaptiveNavigation extends StatelessWidget {
   const AdaptiveNavigation(

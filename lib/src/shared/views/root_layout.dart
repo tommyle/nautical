@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart' as go;
-import 'package:myartist/src/shared/views/logo.dart';
+import 'package:nautical/src/shared/views/logo.dart';
 
 import '../router.dart' as router;
 import 'adaptive_navigation.dart';
@@ -36,7 +36,10 @@ class RootLayout extends StatelessWidget {
             .toList(),
         selectedIndex: currentIndex,
         onDestinationSelected: onSelected,
-        logo: Logo(),
+        logo: Padding(
+          padding: const EdgeInsets.only(top: 18),
+          child: Logo(),
+        ),
         child: Column(
           children: [
             Expanded(
