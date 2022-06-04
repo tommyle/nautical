@@ -11,8 +11,9 @@ class PlaylistHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PlaylistsProvider playlistProvider = PlaylistsProvider();
-    List<Playlist> playlists = playlistProvider.playlists;
+    ProjectsProvider projectsProvider = ProjectsProvider();
+    List<Project> projects = projectsProvider.projects;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
@@ -36,17 +37,17 @@ class PlaylistHomeScreen extends StatelessWidget {
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                   ),
-                  itemCount: playlists.length,
+                  itemCount: projects.length,
                   itemBuilder: (context, index) {
-                    final playlist = playlists[index];
+                    final project = projects[index];
                     return GestureDetector(
                       child: ImageTile(
-                        image: playlist.cover.image,
-                        title: playlist.title,
-                        subtitle: playlist.description,
+                        image: project.image,
+                        title: project.name,
+                        subtitle: project.description,
                       ),
                       onTap: () =>
-                          GoRouter.of(context).go('/playlists/${playlist.id}'),
+                          GoRouter.of(context).go('/playlists/${project.id}'),
                     );
                   },
                 ),

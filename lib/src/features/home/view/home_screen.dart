@@ -1,5 +1,6 @@
 import 'package:adaptive_components/adaptive_components.dart';
 import 'package:flutter/material.dart';
+import 'package:nautical/src/shared/router.dart';
 
 import '../../../shared/classes/classes.dart';
 import '../../../shared/extensions.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final PlaylistsProvider playlistProvider = PlaylistsProvider();
     final List<Playlist> playlists = playlistProvider.playlists;
-    final Playlist topSongs = playlistProvider.topSongs;
+    final List<Project> projects = projectsProvider.projects;
     final ArtistsProvider artistsProvider = ArtistsProvider();
     final List<Artist> artists = artistsProvider.artists;
     return LayoutBuilder(
@@ -101,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               LayoutBuilder(
                                 builder: (context, constraints) =>
                                     TrendingProjects(
-                                  playlist: topSongs,
+                                  projects: projects,
                                   constraints: constraints,
                                 ),
                               ),

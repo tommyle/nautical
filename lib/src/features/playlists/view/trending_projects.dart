@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:nautical/src/shared/views/link_text.dart';
 
-import '../../../shared/classes/classes.dart';
+import '../../../shared/providers/projects.dart';
 import '../../../shared/views/image_clipper.dart';
 import '../../../shared/views/views.dart';
 
 class TrendingProjects extends StatelessWidget {
   const TrendingProjects(
-      {super.key, required this.playlist, required this.constraints});
+      {super.key, required this.projects, required this.constraints});
 
-  final Playlist playlist;
+  final List<Project> projects;
   final BoxConstraints constraints;
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveTable<Song>(
-      items: playlist.songs,
+    return AdaptiveTable<Project>(
+      items: projects,
       breakpoint: 1024,
       columns: const [
         DataColumn(
@@ -35,7 +35,7 @@ class TrendingProjects extends StatelessWidget {
         ),
       ],
       rowBuilder: (context, index) {
-        final song = playlist.songs[index];
+        final project = projects[index];
 
         return DataRow.byIndex(
           index: index,
@@ -50,16 +50,16 @@ class TrendingProjects extends StatelessWidget {
                     top: 12,
                     bottom: 12,
                   ),
-                  child: ClippedImage(song.image.image),
+                  child: ClippedImage(project.image),
                 ),
                 const SizedBox(width: 12),
-                Text(song.title),
+                Text(project.name),
               ]),
             ),
             DataCell(
               SizedBox(
                 width: 80,
-                child: Text(song.formattedDate),
+                child: Text(project.formattedDate),
               ),
             ),
             DataCell(
@@ -75,7 +75,7 @@ class TrendingProjects extends StatelessWidget {
               SizedBox(
                 width: 300,
                 child: Text(
-                  song.description,
+                  project.description,
                   maxLines: 2,
                 ),
               ),
@@ -83,18 +83,18 @@ class TrendingProjects extends StatelessWidget {
           ],
         );
       },
-      itemBuilder: (song, index) {
+      itemBuilder: (project, index) {
         return ListTile(
           onTap: () => {},
-          leading: ClippedImage(song.image.image),
+          leading: ClippedImage(project.image),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: LinkText(
-              linkTitle: '${song.title}',
+              linkTitle: '${project.name}',
               linkAddress: 'https://www.fluttertemplates.com',
             ),
           ),
-          subtitle: Text('${song.formattedDate} -  ${song.description}'),
+          subtitle: Text('${project.formattedDate} -  ${project.description}'),
         );
       },
     );

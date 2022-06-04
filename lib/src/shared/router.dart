@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nautical/src/shared/providers/providers.dart';
 
 import '../features/artists/artists.dart';
 import '../features/home/home.dart';
 import '../features/playlists/playlists.dart';
 import '../features/playlists/view/view.dart';
-import 'providers/artists.dart';
-import 'providers/playlists.dart';
 import 'views/views.dart';
 
 const _pageKey = ValueKey('_pageKey');
 const _scaffoldKey = ValueKey('_scaffoldKey');
 
 final artistsProvider = ArtistsProvider();
-final playlistsProvider = PlaylistsProvider();
+final projectsProvider = ProjectsProvider();
 
 const List<NavigationDestination> destinations = [
   NavigationDestination(
@@ -83,7 +82,7 @@ final appRouter = GoRouter(
               key: _scaffoldKey,
               currentIndex: 1,
               child: PlaylistScreen(
-                playlist: playlistsProvider.getPlaylist(state.params['pid']!)!,
+                project: projectsProvider.getProject(state.params['pid']!),
               ),
             ),
           ),
