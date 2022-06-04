@@ -1,6 +1,6 @@
 {
-    "name": "myartist",
-    "short_name": "myartist",
+    "name": "nautical",
+    "short_name": "nautical",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

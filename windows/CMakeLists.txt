@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(myartist LANGUAGES CXX)
+project(nautical LANGUAGES CXX)
 
-set(BINARY_NAME "myartist")
+set(BINARY_NAME "nautical")
 
 cmake_policy(SET CMP0063 NEW)
 
