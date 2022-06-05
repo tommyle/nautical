@@ -135,17 +135,5 @@ final appRouter = GoRouter(
         ),
       ],
     ),
-    for (final route in destinations.skip(3))
-      GoRoute(
-        path: route.route,
-        pageBuilder: (context, state) => MaterialPage<void>(
-          key: _pageKey,
-          child: RootLayout(
-            key: _scaffoldKey,
-            currentIndex: destinations.indexOf(route),
-            child: const SizedBox(),
-          ),
-        ),
-      ),
   ],
 );
