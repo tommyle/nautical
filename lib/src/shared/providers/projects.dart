@@ -4,14 +4,13 @@ import 'package:collection/collection.dart';
 import 'package:faker/faker.dart';
 import 'package:intl/intl.dart';
 
-final List<String> _projectImages = [
-  'assets/images/collections/akumu/akumu_1.png',
-  'assets/images/collections/boki/boki_1.png',
-  'assets/images/collections/cheebs/cheebs_1.png',
-  'assets/images/collections/chums/chums_1.png',
-  'assets/images/collections/dragonz/dragonz_1.png',
-  'assets/images/collections/flower/flower_1.png',
-  'assets/images/collections/monkez/monkez_1.gif',
+final List<String> _projects = [
+  'akumu',
+  'boki',
+  'cheebs',
+  'chums',
+  'dragonz',
+  'flower',
 ];
 
 class Item {
@@ -59,8 +58,25 @@ extension ProjectEx on Project {
 }
 
 class ProjectsProvider {
-  List<Project> get projects => _projectImages.mapIndexed((i, image) {
+  List<Project> get projects => _projects.mapIndexed((i, project) {
+        final image =
+            'assets/images/collections/$project/${project}_${i + 1}.png';
         final name = faker.company.name();
+
+        final List<Item> items = [];
+        for (int j = 0; j < 12; j++) {
+          items.add(
+            Item(
+              '$j',
+              '$name #$j',
+              Random().nextDouble() * 10,
+              'assets/images/collections/$project/${project}_${j + 1}.png',
+              faker.lorem.sentence(),
+              faker.date.dateTime(),
+              faker.internet.ipv4Address(),
+            ),
+          );
+        }
 
         return Project(
           '$i',
@@ -69,35 +85,7 @@ class ProjectsProvider {
           image,
           faker.lorem.sentence(),
           faker.date.dateTime(),
-          [
-            Item(
-              '$i',
-              '$name #$i',
-              Random().nextDouble() * 10,
-              image,
-              faker.lorem.sentence(),
-              faker.date.dateTime(),
-              faker.internet.ipv4Address(),
-            ),
-            Item(
-              '$i',
-              '$name #$i',
-              Random().nextDouble() * 10,
-              image,
-              faker.lorem.sentence(),
-              faker.date.dateTime(),
-              faker.internet.ipv4Address(),
-            ),
-            Item(
-              '$i',
-              '$name #$i',
-              Random().nextDouble() * 10,
-              image,
-              faker.lorem.sentence(),
-              faker.date.dateTime(),
-              faker.internet.ipv4Address(),
-            )
-          ],
+          items,
         );
       }).toList();
 

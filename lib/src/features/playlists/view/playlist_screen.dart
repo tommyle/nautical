@@ -60,9 +60,9 @@ class PlaylistScreen extends StatelessWidget {
                 final item = project.items[index];
                 return GestureDetector(
                   child: ImageTile(
-                    image: project.image,
-                    title: project.name,
-                    subtitle: project.description,
+                    image: item.image,
+                    title: item.name,
+                    subtitle: item.description,
                   ),
                   onTap: () => GoRouter.of(context).go('/playlists/${item.id}'),
                 );
