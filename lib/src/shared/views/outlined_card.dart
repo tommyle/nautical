@@ -5,10 +5,12 @@ class OutlinedCard extends StatefulWidget {
     super.key,
     required this.child,
     this.clickable = true,
+    this.borderWidth = 1,
   });
 
   final Widget child;
   final bool clickable;
+  final double borderWidth;
 
   @override
   State<OutlinedCard> createState() => _OutlinedCardState();
@@ -43,7 +45,7 @@ class _OutlinedCardState extends State<OutlinedCard> {
         decoration: BoxDecoration(
           border: Border.all(
             color: Theme.of(context).colorScheme.outline,
-            width: 1,
+            width: widget.borderWidth,
           ),
           borderRadius: borderRadius,
         ),

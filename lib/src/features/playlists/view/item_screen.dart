@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nautical/src/shared/views/outlined_card.dart';
 import 'package:nautical/src/shared/views/views.dart';
 import '../../../shared/extensions.dart';
 import '../../../shared/providers/projects.dart';
@@ -28,12 +31,11 @@ class ItemScreen extends StatelessWidget {
                 ? compressedHeader(context, colors, constraints)
                 : fullHeader(context, colors, constraints),
             const SizedBox(height: 12.0),
+            properties(context, constraints),
             const Divider(
               indent: 12,
               endIndent: 12,
             ),
-            const SizedBox(height: 12.0),
-            properties(context, constraints),
             const SizedBox(height: 12.0),
             collection(context, constraints),
           ],
@@ -63,8 +65,8 @@ class ItemScreen extends StatelessWidget {
           child: GridView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.all(15),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: min((constraints.maxWidth ~/ 175).toInt(), 4),
               childAspectRatio: 1.8,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
@@ -73,37 +75,40 @@ class ItemScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final property = item.properties[index];
 
-              return Container(
-                height: 40,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: colors.secondaryContainer.withOpacity(0.4),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(8),
+              return OutlinedCard(
+                borderWidth: 0.1,
+                child: Container(
+                  height: 40,
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: colors.secondaryContainer.withOpacity(0.4),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(8),
+                    ),
                   ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      property.type,
-                      style: context.labelSmall,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      property.name,
-                      style: context.labelLarge?.copyWith(fontSize: 16),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      '${property.percentage.roundToDouble()}% have this trait',
-                      style: context.labelMedium?.copyWith(
-                        color: colors.tertiary,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        property.type,
+                        style: context.labelSmall,
                         overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                      Text(
+                        property.name,
+                        style: context.labelLarge?.copyWith(fontSize: 16),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        '${property.percentage.roundToDouble()}% have this trait',
+                        style: context.labelMedium?.copyWith(
+                          color: colors.tertiary,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
@@ -127,28 +132,31 @@ class ItemScreen extends StatelessWidget {
             style: context.headlineSmall,
           ),
         ),
-        GridView.builder(
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(15),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: (constraints.maxWidth ~/ 175).toInt(),
-            childAspectRatio: 0.70,
-            mainAxisSpacing: 24,
-            crossAxisSpacing: 24,
+        SizedBox(
+          width: 1024,
+          child: GridView.builder(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(15),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: min((constraints.maxWidth ~/ 175).toInt(), 6),
+              childAspectRatio: 0.70,
+              mainAxisSpacing: 24,
+              crossAxisSpacing: 24,
+            ),
+            itemCount: project.items.length,
+            itemBuilder: (context, index) {
+              final item = project.items[index];
+              return GestureDetector(
+                child: ImageTile(
+                  image: item.image,
+                  title: item.name,
+                  subtitle: item.description,
+                ),
+                onTap: () =>
+                    context.go('/projects/${project.id}/item/${item.id}'),
+              );
+            },
           ),
-          itemCount: project.items.length,
-          itemBuilder: (context, index) {
-            final item = project.items[index];
-            return GestureDetector(
-              child: ImageTile(
-                image: item.image,
-                title: item.name,
-                subtitle: item.description,
-              ),
-              onTap: () =>
-                  context.go('/projects/${project.id}/item/${item.id}'),
-            );
-          },
         ),
       ],
     );
@@ -250,7 +258,7 @@ class ItemScreen extends StatelessWidget {
                     const Icon(Icons.diamond),
                     const SizedBox(width: 8),
                     Text(
-                      '${item.price.round()} ETH',
+                      '${item.price.roundToDouble()} ETH',
                       style: context.headlineSmall!.copyWith(),
                     ),
                   ],
