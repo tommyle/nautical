@@ -31,12 +31,15 @@ class AdaptiveTable<T> extends StatelessWidget {
             ],
           );
         }
-        return ListView.builder(
+        return ListView.separated(
           shrinkWrap: true,
           itemCount: items.length,
           itemBuilder: (context, index) {
             final item = items[index];
             return itemBuilder(item, index);
+          },
+          separatorBuilder: (context, index) {
+            return Divider();
           },
         );
       },
