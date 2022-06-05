@@ -7,10 +7,12 @@ import 'package:intl/intl.dart';
 final List<String> _projects = [
   'akumu',
   'boki',
+  'bunnies',
   'cheebs',
   'chums',
   'dragonz',
   'flower',
+  'quirklings',
 ];
 
 class Item {
