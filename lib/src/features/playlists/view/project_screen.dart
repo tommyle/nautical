@@ -48,8 +48,8 @@ class ProjectScreen extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: (constraints.maxWidth ~/ 175).toInt(),
                 childAspectRatio: 0.70,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
+                mainAxisSpacing: 24,
+                crossAxisSpacing: 24,
               ),
               itemCount: project.items.length,
               itemBuilder: (context, index) {

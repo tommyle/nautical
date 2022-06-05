@@ -25,8 +25,8 @@ class ArtistsScreen extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: max(1, (constraints.maxWidth ~/ 400).toInt()),
             childAspectRatio: 2.5,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
+            mainAxisSpacing: 24,
+            crossAxisSpacing: 24,
           ),
           itemCount: artists.length,
           itemBuilder: (context, index) {
