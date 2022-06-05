@@ -15,6 +15,26 @@ final List<String> _projects = [
   'quirklings',
 ];
 
+class Property {
+  final String type;
+  final String name;
+  final double percentage;
+
+  Property(
+    this.type,
+    this.name,
+    this.percentage,
+  );
+
+  static Property generate() {
+    return Property(
+      faker.food.cuisine(),
+      faker.food.dish(),
+      Random().nextDouble() * 12,
+    );
+  }
+}
+
 class Item {
   final String id;
   final String name;
@@ -23,6 +43,7 @@ class Item {
   final String description;
   final DateTime date;
   final String address;
+  final List<Property> properties;
 
   Item(
     this.id,
@@ -32,7 +53,30 @@ class Item {
     this.description,
     this.date,
     this.address,
+    this.properties,
   );
+
+  static Item generate(int id, String name, String image) {
+    return Item(
+      id.toString(),
+      '$name #$id',
+      Random().nextDouble() * 10,
+      image,
+      faker.lorem.sentence(),
+      faker.date.dateTime(),
+      faker.internet.ipv4Address(),
+      generateProperties(),
+    );
+  }
+
+  static List<Property> generateProperties() {
+    final List<Property> properties = [];
+    for (int i = 0; i < 10; i++) {
+      properties.add(Property.generate());
+    }
+
+    return properties;
+  }
 }
 
 class Project {
@@ -53,6 +97,41 @@ class Project {
     this.date,
     this.items,
   );
+
+  static Project generate(
+    int id,
+    String name,
+    String image,
+    String project,
+  ) {
+    return Project(
+      id.toString(),
+      name,
+      faker.person.name(),
+      'assets/images/collections/$project/${project}_${id + 1}.png',
+      faker.lorem.sentence(),
+      faker.date.dateTime(),
+      generateItems(name, project),
+    );
+  }
+
+  static List<Item> generateItems(
+    String name,
+    String project,
+  ) {
+    final List<Item> items = [];
+    for (int j = 0; j < 12; j++) {
+      items.add(
+        Item.generate(
+          j,
+          name,
+          'assets/images/collections/$project/${project}_${j + 1}.png',
+        ),
+      );
+    }
+
+    return items;
+  }
 }
 
 extension ProjectEx on Project {
@@ -65,29 +144,11 @@ class ProjectsProvider {
             'assets/images/collections/$project/${project}_${i + 1}.png';
         final name = faker.company.name();
 
-        final List<Item> items = [];
-        for (int j = 0; j < 12; j++) {
-          items.add(
-            Item(
-              '$j',
-              '$name #$j',
-              Random().nextDouble() * 10,
-              'assets/images/collections/$project/${project}_${j + 1}.png',
-              faker.lorem.sentence(),
-              faker.date.dateTime(),
-              faker.internet.ipv4Address(),
-            ),
-          );
-        }
-
-        return Project(
-          '$i',
+        return Project.generate(
+          i,
           name,
-          faker.person.name(),
           image,
-          faker.lorem.sentence(),
-          faker.date.dateTime(),
-          items,
+          project,
         );
       }).toList();
 

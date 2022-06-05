@@ -93,6 +93,8 @@ final appRouter = GoRouter(
                     key: _scaffoldKey,
                     currentIndex: 1,
                     child: ItemScreen(
+                      project:
+                          projectsProvider.getProject(state.params['pid']!),
                       item: projectsProvider.getItem(
                           state.params['pid']!, state.params['id']!),
                     ),
