@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
             builder: (context, value, _) {
               final theme = ThemeProvider.of(context);
               return MaterialApp.router(
-                scrollBehavior: MyCustomScrollBehavior(),
+                scrollBehavior: AppScrollBehavior(),
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
                 theme: theme.light(settings.value.sourceColor),
@@ -52,12 +52,9 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class MyCustomScrollBehavior extends MaterialScrollBehavior {
-  // Override behavior methods and getters like dragDevices
+class AppScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-        // etc.
       };
 }
