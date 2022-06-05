@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../shared/classes/playlist.dart';
 import '../../../shared/extensions.dart';
+import '../../../shared/providers/projects.dart';
 import '../../../shared/views/clickable.dart';
 import '../../../shared/views/image_clipper.dart';
 import '../../../shared/views/outlined_card.dart';
 
 class HomeRecent extends StatelessWidget {
   const HomeRecent(
-      {super.key, required this.playlists, this.axis = Axis.horizontal});
+      {super.key, required this.projects, this.axis = Axis.horizontal});
 
-  final List<Playlist> playlists;
+  final List<Project> projects;
   final Axis axis;
 
   @override
@@ -22,9 +22,9 @@ class HomeRecent extends StatelessWidget {
         child: ListView.builder(
           scrollDirection: axis,
           padding: const EdgeInsets.only(left: 10),
-          itemCount: playlists.length,
+          itemCount: projects.length,
           itemBuilder: (context, index) {
-            final playlist = playlists[index];
+            final project = projects[index];
 
             return Clickable(
               child: Padding(
@@ -40,21 +40,21 @@ class HomeRecent extends StatelessWidget {
                         Row(
                           children: [
                             Expanded(
-                              child: Image.asset(playlist.cover.image,
+                              child: Image.asset(project.image,
                                   fit: BoxFit.cover),
                             ),
                           ],
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-                          child: buildDetails(context, playlist),
+                          child: buildDetails(context, project),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              onTap: () => GoRouter.of(context).go('/playlists/${playlist.id}'),
+              onTap: () => GoRouter.of(context).go('/playlists/${project.id}'),
             );
           },
         ),
@@ -62,9 +62,9 @@ class HomeRecent extends StatelessWidget {
     }
     return ListView.builder(
       scrollDirection: axis,
-      itemCount: playlists.length,
+      itemCount: projects.length,
       itemBuilder: (context, index) {
-        final playlist = playlists[index];
+        final playlist = projects[index];
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Clickable(
@@ -77,7 +77,7 @@ class HomeRecent extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   ClippedImage(
-                    playlist.cover.image,
+                    playlist.image,
                     height: 200,
                   ),
                   Expanded(
@@ -97,13 +97,13 @@ class HomeRecent extends StatelessWidget {
     );
   }
 
-  Widget buildDetails(BuildContext context, Playlist playlist) {
+  Widget buildDetails(BuildContext context, Project project) {
     return Column(
       children: [
         Padding(
             padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             child: Text(
-              playlist.title,
+              project.name,
               style: context.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -113,7 +113,7 @@ class HomeRecent extends StatelessWidget {
             )),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          child: Text(playlist.description,
+          child: Text(project.description,
               overflow: TextOverflow.ellipsis,
               style: context.labelSmall,
               maxLines: 2,

@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       HomeRecent(
-                        playlists: playlists,
+                        projects: projects,
                       ),
                     ],
                   ),
