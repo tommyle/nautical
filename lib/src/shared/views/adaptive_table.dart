@@ -39,7 +39,7 @@ class AdaptiveTable<T> extends StatelessWidget {
             return itemBuilder(item, index);
           },
           separatorBuilder: (context, index) {
-            return Divider();
+            return const Divider();
           },
         );
       },
