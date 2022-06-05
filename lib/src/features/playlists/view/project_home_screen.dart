@@ -6,8 +6,8 @@ import '../../../shared/classes/classes.dart';
 import '../../../shared/providers/providers.dart';
 import '../../../shared/views/views.dart';
 
-class PlaylistHomeScreen extends StatelessWidget {
-  const PlaylistHomeScreen({super.key});
+class ProjectHomeScreen extends StatelessWidget {
+  const ProjectHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class PlaylistHomeScreen extends StatelessWidget {
                         subtitle: project.description,
                       ),
                       onTap: () =>
-                          GoRouter.of(context).go('/playlists/${project.id}'),
+                          GoRouter.of(context).go('/projects/${project.id}'),
                     );
                   },
                 ),

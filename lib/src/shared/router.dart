@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nautical/src/features/playlists/projects.dart';
 import 'package:nautical/src/shared/providers/providers.dart';
 
 import '../features/artists/artists.dart';
 import '../features/home/home.dart';
-import '../features/playlists/playlists.dart';
-import '../features/playlists/view/view.dart';
 import 'views/views.dart';
 
 const _pageKey = ValueKey('_pageKey');
@@ -23,7 +22,7 @@ const List<NavigationDestination> destinations = [
   NavigationDestination(
     label: 'Projects',
     icon: Icon(Icons.diamond),
-    route: '/playlists',
+    route: '/projects',
   ),
   NavigationDestination(
     label: 'Launchpad',
@@ -62,15 +61,15 @@ final appRouter = GoRouter(
       ),
     ),
 
-    // PlaylistHomeScreen
+    // ProjectHomeScreen
     GoRoute(
-      path: '/playlists',
+      path: '/projects',
       pageBuilder: (context, state) => const MaterialPage<void>(
         key: _pageKey,
         child: RootLayout(
           key: _scaffoldKey,
           currentIndex: 1,
-          child: PlaylistHomeScreen(),
+          child: ProjectHomeScreen(),
         ),
       ),
       routes: [
@@ -81,7 +80,7 @@ final appRouter = GoRouter(
             child: RootLayout(
               key: _scaffoldKey,
               currentIndex: 1,
-              child: PlaylistScreen(
+              child: ProjectScreen(
                 project: projectsProvider.getProject(state.params['pid']!),
               ),
             ),

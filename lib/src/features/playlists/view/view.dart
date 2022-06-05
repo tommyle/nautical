@@ -1,2 +1,2 @@
-export 'playlist_home_screen.dart';
-export 'playlist_screen.dart';
+export 'project_home_screen.dart';
+export 'project_screen.dart';

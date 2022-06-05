@@ -54,7 +54,7 @@ class HomeRecent extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () => GoRouter.of(context).go('/playlists/${project.id}'),
+              onTap: () => GoRouter.of(context).go('/projects/${project.id}'),
             );
           },
         ),
@@ -68,7 +68,7 @@ class HomeRecent extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Clickable(
-            onTap: () => GoRouter.of(context).go('/playlists/${playlist.id}'),
+            onTap: () => GoRouter.of(context).go('/projects/${playlist.id}'),
             child: SizedBox(
               height: 200,
               child: Row(

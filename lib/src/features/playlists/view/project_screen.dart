@@ -1,16 +1,12 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../shared/extensions.dart';
 import '../../../shared/providers/projects.dart';
-import '../../../shared/views/adaptive_image_card.dart';
 import '../../../shared/views/views.dart';
-import 'trending_projects.dart';
 
-class PlaylistScreen extends StatelessWidget {
-  const PlaylistScreen({required this.project, super.key});
+class ProjectScreen extends StatelessWidget {
+  const ProjectScreen({required this.project, super.key});
 
   final Project project;
 
@@ -22,7 +18,7 @@ class PlaylistScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           leading: BackButton(
-            onPressed: () => GoRouter.of(context).go('/playlists'),
+            onPressed: () => GoRouter.of(context).go('/projects'),
           ),
         ),
         body: ListView(
@@ -64,7 +60,7 @@ class PlaylistScreen extends StatelessWidget {
                     title: item.name,
                     subtitle: item.description,
                   ),
-                  onTap: () => GoRouter.of(context).go('/playlists/${item.id}'),
+                  onTap: () => GoRouter.of(context).go('/projects/${item.id}'),
                 );
               },
             ),

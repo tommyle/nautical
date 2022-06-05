@@ -1,12 +1,12 @@
 import 'package:adaptive_components/adaptive_components.dart';
 import 'package:flutter/material.dart';
+import 'package:nautical/src/features/playlists/view/trending_projects.dart';
 import 'package:nautical/src/shared/router.dart';
 
 import '../../../shared/classes/classes.dart';
 import '../../../shared/extensions.dart';
 import '../../../shared/providers/providers.dart';
 import '../../../shared/views/views.dart';
-import '../../playlists/view/trending_projects.dart';
 import 'view.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,11 +19,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final PlaylistsProvider playlistProvider = PlaylistsProvider();
-    final List<Playlist> playlists = playlistProvider.playlists;
     final List<Project> projects = projectsProvider.projects;
     final ArtistsProvider artistsProvider = ArtistsProvider();
-    final List<Artist> artists = artistsProvider.artists;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
