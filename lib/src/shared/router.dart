@@ -48,7 +48,6 @@ class NavigationDestination {
 
 final appRouter = GoRouter(
   routes: [
-    // HomeScreen
     GoRoute(
       path: '/',
       pageBuilder: (context, state) => const MaterialPage<void>(
@@ -60,8 +59,6 @@ final appRouter = GoRouter(
         ),
       ),
     ),
-
-    // ProjectHomeScreen
     GoRoute(
       path: '/projects',
       pageBuilder: (context, state) => const MaterialPage<void>(
@@ -104,8 +101,6 @@ final appRouter = GoRouter(
             ]),
       ],
     ),
-
-    // ArtistHomeScreen
     GoRoute(
       path: '/artists',
       pageBuilder: (context, state) => const MaterialPage<void>(
@@ -129,9 +124,6 @@ final appRouter = GoRouter(
               ),
             ),
           ),
-          // builder: (context, state) => ArtistScreen(
-          //   id: state.params['aid']!,
-          // ),
         ),
       ],
     ),
