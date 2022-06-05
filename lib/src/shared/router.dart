@@ -47,6 +47,7 @@ class NavigationDestination {
 }
 
 final appRouter = GoRouter(
+  urlPathStrategy: UrlPathStrategy.path,
   routes: [
     GoRoute(
       path: '/',
