@@ -48,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 AdaptiveContainer(
                   columnSpan: 12,
                   child: Column(
-                    children: [
-                      const HomeHighlight(),
+                    children: const [
+                      HomeHighlight(),
                     ],
                   ),
                 ),

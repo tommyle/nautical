@@ -7,11 +7,11 @@ class LinkText extends StatelessWidget {
   final String linkAddress;
   final bool underlined;
 
-  LinkText({
+  const LinkText({Key? key, 
     required this.linkTitle,
     required this.linkAddress,
     this.underlined = false,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

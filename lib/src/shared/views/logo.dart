@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
+  const Logo({Key? key}) : super(key: key);
+
   @override
   Widget build(Object context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 20,
       ),
       height: 80,
@@ -15,10 +17,10 @@ class Logo extends StatelessWidget {
             color: Colors.blue.shade800,
             size: 40,
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
-          Text(
+          const Text(
             "Nautical",
             style: TextStyle(
               fontSize: 30,

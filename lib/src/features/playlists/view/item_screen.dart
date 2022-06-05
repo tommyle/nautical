@@ -21,7 +21,7 @@ class ItemScreen extends StatelessWidget {
 
   Container projectImage(BoxConstraints constraints) {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 14,
         left: 14,
         right: 24,

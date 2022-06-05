@@ -62,7 +62,7 @@ class TrendingProjects extends StatelessWidget {
                 child: Text(project.formattedDate),
               ),
             ),
-            DataCell(
+            const DataCell(
               SizedBox(
                 width: 80,
                 child: LinkText(
@@ -90,7 +90,7 @@ class TrendingProjects extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
             child: LinkText(
-              linkTitle: '${project.name}',
+              linkTitle: project.name,
               linkAddress: 'https://www.fluttertemplates.com',
             ),
           ),

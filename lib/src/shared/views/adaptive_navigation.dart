@@ -34,7 +34,7 @@ class AdaptiveNavigation extends StatelessWidget {
                         minExtendedWidth: 180,
                         destinations: destinations
                             .map((e) => NavigationRailDestination(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     vertical: 4,
                                   ),
                                   icon: e.icon,
