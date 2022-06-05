@@ -4,14 +4,13 @@ import 'package:nautical/src/features/playlists/projects.dart';
 import 'package:nautical/src/features/playlists/view/item_screen.dart';
 import 'package:nautical/src/shared/providers/providers.dart';
 
-import '../features/artists/artists.dart';
 import '../features/home/home.dart';
+import '../features/launchpad/view/launchpad_screen.dart';
 import 'views/views.dart';
 
 const _pageKey = ValueKey('_pageKey');
 const _scaffoldKey = ValueKey('_scaffoldKey');
 
-final artistsProvider = ArtistsProvider();
 final projectsProvider = ProjectsProvider();
 
 const List<NavigationDestination> destinations = [
@@ -21,14 +20,14 @@ const List<NavigationDestination> destinations = [
     route: '/',
   ),
   NavigationDestination(
+    label: 'Launchpad',
+    icon: Icon(Icons.rocket_launch),
+    route: '/launchpad',
+  ),
+  NavigationDestination(
     label: 'Projects',
     icon: Icon(Icons.diamond),
     route: '/projects',
-  ),
-  NavigationDestination(
-    label: 'Launchpad',
-    icon: Icon(Icons.rocket_launch),
-    route: '/artists',
   ),
 ];
 
@@ -61,12 +60,23 @@ final appRouter = GoRouter(
       ),
     ),
     GoRoute(
-      path: '/projects',
+      path: '/launchpad',
       pageBuilder: (context, state) => const MaterialPage<void>(
         key: _pageKey,
         child: RootLayout(
           key: _scaffoldKey,
           currentIndex: 1,
+          child: LaunchpadScreen(),
+        ),
+      ),
+    ),
+    GoRoute(
+      path: '/projects',
+      pageBuilder: (context, state) => const MaterialPage<void>(
+        key: _pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 2,
           child: ProjectHomeScreen(),
         ),
       ),
@@ -77,7 +87,7 @@ final appRouter = GoRouter(
                   key: state.pageKey,
                   child: RootLayout(
                     key: _scaffoldKey,
-                    currentIndex: 1,
+                    currentIndex: 2,
                     child: ProjectScreen(
                       project:
                           projectsProvider.getProject(state.params['pid']!),
@@ -91,7 +101,7 @@ final appRouter = GoRouter(
                   key: state.pageKey,
                   child: RootLayout(
                     key: _scaffoldKey,
-                    currentIndex: 1,
+                    currentIndex: 2,
                     child: ItemScreen(
                       project:
                           projectsProvider.getProject(state.params['pid']!),
@@ -102,32 +112,6 @@ final appRouter = GoRouter(
                 ),
               ),
             ]),
-      ],
-    ),
-    GoRoute(
-      path: '/artists',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 2,
-          child: ArtistsScreen(),
-        ),
-      ),
-      routes: [
-        GoRoute(
-          path: ':aid',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: RootLayout(
-              key: _scaffoldKey,
-              currentIndex: 2,
-              child: ArtistScreen(
-                artist: artistsProvider.getArtist(state.params['aid']!)!,
-              ),
-            ),
-          ),
-        ),
       ],
     ),
   ],

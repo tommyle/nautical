@@ -1,31 +1,28 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import '../../../shared/classes/classes.dart';
+import 'package:nautical/src/shared/providers/projects.dart';
 import '../../../shared/extensions.dart';
 import '../../../shared/views/outlined_card.dart';
-import '../../../shared/views/views.dart';
 
-class ArtistCard extends StatelessWidget {
-  const ArtistCard({
+class ProjectCard extends StatelessWidget {
+  const ProjectCard({
     super.key,
-    required this.artist,
+    required this.project,
   });
 
-  final Artist artist;
+  final Project project;
 
   @override
   Widget build(BuildContext context) {
-    Song nowPlaying = artist.songs[Random().nextInt(artist.songs.length)];
-
     return OutlinedCard(
       child: LayoutBuilder(
-        builder: (context, dimens) => Row(
+        builder: (context, constraints) => Row(
           children: [
             SizedBox(
-              width: dimens.maxWidth * 0.4,
+              width: constraints.maxWidth * 0.4,
               child: Image.asset(
-                artist.image.image,
+                project.image,
                 fit: BoxFit.cover,
               ),
             ),
@@ -42,37 +39,39 @@ class ArtistCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              artist.name,
+                              project.name,
                               style: context.titleMedium,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              artist.bio,
+                              project.description,
                               overflow: TextOverflow.ellipsis,
                               style: context.labelSmall,
                               maxLines: 3,
                             ),
+                            const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Items: ${project.items.length}',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: context.labelMedium,
+                                  maxLines: 3,
+                                ),
+                                const SizedBox(width: 24,),
+                                Text(
+                                  'Price: ${(Random().nextDouble() * 10).roundToDouble()} ETH',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: context.labelMedium,
+                                  maxLines: 3,
+                                ),
+                              ],
+                            ),
                           ]),
                     ),
-                    if (dimens.maxHeight > 100)
-                      Row(
-                        children: [
-                          HoverableSongPlayButton(
-                            size: const Size(50, 50),
-                            song: nowPlaying,
-                            child: Icon(Icons.play_circle,
-                                color: context.colors.tertiary),
-                          ),
-                          Text(
-                            nowPlaying.title,
-                            maxLines: 1,
-                            overflow: TextOverflow.clip,
-                            style: context.labelMedium,
-                          ),
-                        ],
-                      ),
                   ],
                 ),
               ),
