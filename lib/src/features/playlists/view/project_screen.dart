@@ -18,7 +18,7 @@ class ProjectScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           leading: BackButton(
-            onPressed: () => GoRouter.of(context).go('/projects'),
+            onPressed: () => context.go('/projects'),
           ),
         ),
         body: ListView(
@@ -60,7 +60,7 @@ class ProjectScreen extends StatelessWidget {
                     title: item.name,
                     subtitle: item.description,
                   ),
-                  onTap: () => GoRouter.of(context).go('/projects/${item.id}'),
+                  onTap: () => context.go('/projects/${project.id}/item/${item.id}'),
                 );
               },
             ),

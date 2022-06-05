@@ -49,7 +49,7 @@ class HomeArtists extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
         child: Text(artist.name, style: context.labelMedium),
       ),
-      onTap: () => GoRouter.of(context).go('/artists/${artist.id}'),
+      onTap: () => context.go('/artists/${artist.id}'),
     );
   }
 }

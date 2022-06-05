@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nautical/src/shared/extensions.dart';
 
-import '../../../shared/classes/classes.dart';
 import '../../../shared/providers/providers.dart';
 import '../../../shared/views/views.dart';
 
@@ -46,8 +45,7 @@ class ProjectHomeScreen extends StatelessWidget {
                         title: project.name,
                         subtitle: project.description,
                       ),
-                      onTap: () =>
-                          GoRouter.of(context).go('/projects/${project.id}'),
+                      onTap: () => context.go('/projects/${project.id}'),
                     );
                   },
                 ),

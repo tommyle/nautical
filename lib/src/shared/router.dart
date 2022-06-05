@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nautical/src/features/playlists/projects.dart';
+import 'package:nautical/src/features/playlists/view/item_screen.dart';
 import 'package:nautical/src/shared/providers/providers.dart';
 
 import '../features/artists/artists.dart';
@@ -46,7 +47,6 @@ class NavigationDestination {
 }
 
 final appRouter = GoRouter(
-  // navigatorBuilder: (context, state, child) => PlayPauseListener(child: child),
   routes: [
     // HomeScreen
     GoRoute(
@@ -74,18 +74,34 @@ final appRouter = GoRouter(
       ),
       routes: [
         GoRoute(
-          path: ':pid',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: RootLayout(
-              key: _scaffoldKey,
-              currentIndex: 1,
-              child: ProjectScreen(
-                project: projectsProvider.getProject(state.params['pid']!),
+            path: ':pid',
+            pageBuilder: (context, state) => MaterialPage<void>(
+                  key: state.pageKey,
+                  child: RootLayout(
+                    key: _scaffoldKey,
+                    currentIndex: 1,
+                    child: ProjectScreen(
+                      project:
+                          projectsProvider.getProject(state.params['pid']!),
+                    ),
+                  ),
+                ),
+            routes: [
+              GoRoute(
+                path: 'item/:id',
+                pageBuilder: (context, state) => MaterialPage<void>(
+                  key: state.pageKey,
+                  child: RootLayout(
+                    key: _scaffoldKey,
+                    currentIndex: 1,
+                    child: ItemScreen(
+                      item: projectsProvider.getItem(
+                          state.params['pid']!, state.params['id']!),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
+            ]),
       ],
     ),
 

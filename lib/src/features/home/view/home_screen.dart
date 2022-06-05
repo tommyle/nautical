@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       HomeRecent(
-                        projects: projects..shuffle(),
+                        projects: projects.sublist(0, 4)
                       ),
                     ],
                   ),

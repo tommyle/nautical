@@ -23,7 +23,7 @@ class RootLayout extends StatelessWidget {
     return LayoutBuilder(builder: (context, dimens) {
       void onSelected(int index) {
         final destination = router.destinations[index];
-        go.GoRouter.of(context).go(destination.route);
+        context.go(destination.route);
       }
 
       return AdaptiveNavigation(

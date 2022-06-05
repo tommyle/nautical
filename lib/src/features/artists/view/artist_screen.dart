@@ -23,7 +23,7 @@ class ArtistScreen extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               leading: BackButton(
-                onPressed: () => GoRouter.of(context).go('/artists'),
+                onPressed: () => context.go('/artists'),
               ),
               title: Text('ARTIST - ${artist.name}'),
               bottom: PreferredSize(

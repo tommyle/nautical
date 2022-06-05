@@ -92,7 +92,10 @@ class ProjectsProvider {
       }).toList();
 
   Project getProject(String id) {
-    print(projects);
     return projects.firstWhere((p) => p.id == id);
+  }
+
+  Item getItem(String projectId, String itemId) {
+    return getProject(projectId).items.firstWhere((item) => item.id == itemId);
   }
 }

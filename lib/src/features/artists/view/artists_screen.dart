@@ -35,7 +35,7 @@ class ArtistsScreen extends StatelessWidget {
               child: ArtistCard(
                 artist: artist,
               ),
-              onTap: () => GoRouter.of(context).go('/artists/${artist.id}'),
+              onTap: () => context.go('/artists/${artist.id}'),
             );
           },
         ),
