@@ -88,43 +88,41 @@ final appRouter = GoRouter(
       ),
       routes: [
         GoRoute(
-            path: ':pid',
-            pageBuilder: (context, state) => MaterialPage<void>(
-                  key: state.pageKey,
-                  child: RootLayout(
-                    title:
-                        projectsProvider.getProject(state.params['pid']!).name,
-                    key: _scaffoldKey,
-                    currentIndex: 2,
-                    isRoot: false,
-                    child: ProjectScreen(
-                      project:
-                          projectsProvider.getProject(state.params['pid']!),
-                    ),
-                  ),
-                ),
-            routes: [
-              GoRoute(
-                path: 'item/:id',
-                pageBuilder: (context, state) => MaterialPage<void>(
-                  key: state.pageKey,
-                  child: RootLayout(
-                    title: projectsProvider
-                        .getItem(state.params['pid']!, state.params['id']!)
-                        .name,
-                    key: _scaffoldKey,
-                    currentIndex: 2,
-                    isRoot: false,
-                    child: ItemScreen(
-                      project:
-                          projectsProvider.getProject(state.params['pid']!),
-                      item: projectsProvider.getItem(
-                          state.params['pid']!, state.params['id']!),
-                    ),
+          path: ':pid',
+          pageBuilder: (context, state) => MaterialPage<void>(
+            key: state.pageKey,
+            child: RootLayout(
+              title: projectsProvider.getProject(state.params['pid']!).name,
+              key: _scaffoldKey,
+              currentIndex: 2,
+              isRoot: false,
+              child: ProjectScreen(
+                project: projectsProvider.getProject(state.params['pid']!),
+              ),
+            ),
+          ),
+          routes: [
+            GoRoute(
+              path: 'item/:id',
+              pageBuilder: (context, state) => MaterialPage<void>(
+                key: state.pageKey,
+                child: RootLayout(
+                  title: projectsProvider
+                      .getItem(state.params['pid']!, state.params['id']!)
+                      .name,
+                  key: _scaffoldKey,
+                  currentIndex: 2,
+                  isRoot: false,
+                  child: ItemScreen(
+                    project: projectsProvider.getProject(state.params['pid']!),
+                    item: projectsProvider.getItem(
+                        state.params['pid']!, state.params['id']!),
                   ),
                 ),
               ),
-            ]),
+            ),
+          ],
+        ),
       ],
     ),
   ],
