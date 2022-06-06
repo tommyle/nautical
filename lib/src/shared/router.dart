@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nautical/src/features/projects/projects.dart';
@@ -44,6 +46,8 @@ class NavigationDestination {
   final Icon icon;
   final Widget? child;
 }
+
+final _persistentNavigation = !(Platform.isIOS || Platform.isAndroid);
 
 final appRouter = GoRouter(
   urlPathStrategy: UrlPathStrategy.path,
@@ -95,7 +99,7 @@ final appRouter = GoRouter(
               title: projectsProvider.getProject(state.params['pid']!).name,
               key: _scaffoldKey,
               currentIndex: 2,
-              isRoot: false,
+              isRoot: _persistentNavigation,
               child: ProjectScreen(
                 project: projectsProvider.getProject(state.params['pid']!),
               ),
@@ -112,7 +116,7 @@ final appRouter = GoRouter(
                       .name,
                   key: _scaffoldKey,
                   currentIndex: 2,
-                  isRoot: false,
+                  isRoot: _persistentNavigation,
                   child: ItemScreen(
                     project: projectsProvider.getProject(state.params['pid']!),
                     item: projectsProvider.getItem(
