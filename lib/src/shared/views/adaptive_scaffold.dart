@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:nautical/src/shared/extensions.dart';
 
-class AdaptiveNavigation extends StatelessWidget {
-  const AdaptiveNavigation(
+class AdaptiveScaffold extends StatelessWidget {
+  const AdaptiveScaffold(
       {super.key,
       required this.destinations,
       required this.selectedIndex,

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart' as go;
 import 'package:nautical/src/shared/views/logo.dart';
 
 import '../router.dart' as router;
-import 'adaptive_navigation.dart';
+import 'adaptive_scaffold.dart';
 
 class RootLayout extends StatelessWidget {
   const RootLayout({
@@ -28,7 +28,7 @@ class RootLayout extends StatelessWidget {
         context.go(destination.route);
       }
 
-      return AdaptiveNavigation(
+      return AdaptiveScaffold(
         title: title,
         key: _navigationRailKey,
         destinations: router.destinations
