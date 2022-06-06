@@ -49,6 +49,7 @@ class LaunchpadScreen extends StatelessWidget {
 
   GridView grid(BoxConstraints constraints, List<Project> projects) {
     return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       padding: const EdgeInsets.all(15),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -32,6 +32,7 @@ class AdaptiveTable<T> extends StatelessWidget {
           );
         }
         return ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: items.length,
           itemBuilder: (context, index) {

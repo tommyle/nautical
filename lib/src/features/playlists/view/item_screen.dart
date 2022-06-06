@@ -63,6 +63,7 @@ class ItemScreen extends StatelessWidget {
         SizedBox(
           width: 740,
           child: GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             padding: const EdgeInsets.all(15),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -135,6 +136,7 @@ class ItemScreen extends StatelessWidget {
         SizedBox(
           width: 1024,
           child: GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             padding: const EdgeInsets.all(15),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

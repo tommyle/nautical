@@ -43,6 +43,7 @@ class ProjectScreen extends StatelessWidget {
               ),
             ),
             GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               padding: const EdgeInsets.all(15),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
