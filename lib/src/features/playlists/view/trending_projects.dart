@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nautical/src/shared/views/link_text.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../shared/providers/projects.dart';
 import '../../../shared/views/image_clipper.dart';
@@ -34,7 +35,7 @@ class TrendingProjects extends StatelessWidget {
           label: Text('Description'),
         ),
       ],
-      rowBuilder: (context, index) {
+      rowBuilder: (_, index) {
         final project = projects[index];
 
         return DataRow.byIndex(
@@ -44,17 +45,20 @@ class TrendingProjects extends StatelessWidget {
               Text('${index + 1}'),
             ),
             DataCell(
-              Row(children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 12,
-                    bottom: 12,
+              Clickable(
+                onTap: () => context.go('/projects/${project.id}'),
+                child: Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 12,
+                      bottom: 12,
+                    ),
+                    child: ClippedImage(project.image),
                   ),
-                  child: ClippedImage(project.image),
-                ),
-                const SizedBox(width: 12),
-                Text(project.name),
-              ]),
+                  const SizedBox(width: 12),
+                  Text(project.name),
+                ]),
+              ),
             ),
             DataCell(
               SizedBox(
