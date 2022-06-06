@@ -14,59 +14,52 @@ class ProjectScreen extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       final colors = Theme.of(context).colorScheme;
 
-      return Scaffold(
-        appBar: AppBar(
-          leading: BackButton(
-            onPressed: () => context.go('/projects'),
+      return ListView(
+        children: [
+          constraints.isMobile
+              ? compressedHeader(context, colors, constraints)
+              : fullHeader(context, colors, constraints),
+          const SizedBox(height: 12.0),
+          const Divider(
+            indent: 12,
+            endIndent: 12,
           ),
-        ),
-        body: ListView(
-          children: [
-            constraints.isMobile
-                ? compressedHeader(context, colors, constraints)
-                : fullHeader(context, colors, constraints),
-            const SizedBox(height: 12.0),
-            const Divider(
-              indent: 12,
-              endIndent: 12,
+          const SizedBox(height: 12.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 0,
             ),
-            const SizedBox(height: 12.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 15,
-                vertical: 0,
-              ),
-              child: Text(
-                'Collection',
-                style: context.headlineSmall,
-              ),
+            child: Text(
+              'Collection',
+              style: context.headlineSmall,
             ),
-            GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(15),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: (constraints.maxWidth ~/ 175).toInt(),
-                childAspectRatio: 0.70,
-                mainAxisSpacing: 24,
-                crossAxisSpacing: 24,
-              ),
-              itemCount: project.items.length,
-              itemBuilder: (context, index) {
-                final item = project.items[index];
-                return GestureDetector(
-                  child: ImageTile(
-                    image: item.image,
-                    title: item.name,
-                    subtitle: item.description,
-                  ),
-                  onTap: () =>
-                      context.go('/projects/${project.id}/item/${item.id}'),
-                );
-              },
+          ),
+          GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(15),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: (constraints.maxWidth ~/ 175).toInt(),
+              childAspectRatio: 0.70,
+              mainAxisSpacing: 24,
+              crossAxisSpacing: 24,
             ),
-          ],
-        ),
+            itemCount: project.items.length,
+            itemBuilder: (context, index) {
+              final item = project.items[index];
+              return GestureDetector(
+                child: ImageTile(
+                  image: item.image,
+                  title: item.name,
+                  subtitle: item.description,
+                ),
+                onTap: () =>
+                    context.go('/projects/${project.id}/item/${item.id}'),
+              );
+            },
+          ),
+        ],
       );
     });
   }
@@ -78,7 +71,7 @@ class ProjectScreen extends StatelessWidget {
   ) {
     return Row(
       children: [
-        projectImage(constraints),
+        projectImage(constraints, context),
         projectDescription(
           context,
           colors,
@@ -95,7 +88,7 @@ class ProjectScreen extends StatelessWidget {
   ) {
     return Column(
       children: [
-        projectImage(constraints),
+        projectImage(constraints, context),
         projectDescription(
           context,
           colors,
@@ -122,6 +115,7 @@ class ProjectScreen extends StatelessWidget {
           Text(
             project.name,
             style: context.displaySmall!.copyWith(color: colors.onSurface),
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 8),
@@ -160,7 +154,7 @@ class ProjectScreen extends StatelessWidget {
     );
   }
 
-  Container projectImage(BoxConstraints constraints) {
+  Container projectImage(BoxConstraints constraints, BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
         top: 14,
@@ -168,8 +162,11 @@ class ProjectScreen extends StatelessWidget {
         right: 24,
         bottom: 14,
       ),
-      width: constraints.isMobile ? null : 250,
-      child: Image.asset(project.image),
+      width: constraints.isMobile ? MediaQuery.of(context).size.width : 250,
+      child: Image.asset(
+        project.image,
+        fit: BoxFit.fill,
+      ),
     );
   }
 }

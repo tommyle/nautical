@@ -11,22 +11,25 @@ class RootLayout extends StatelessWidget {
     super.key,
     required this.child,
     required this.currentIndex,
+    required this.title,
   });
 
   final Widget child;
   final int currentIndex;
+  final String title;
   static const _switcherKey = ValueKey('switcherKey');
   static const _navigationRailKey = ValueKey('navigationRailKey');
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, dimens) {
+    return LayoutBuilder(builder: (context, constraints) {
       void onSelected(int index) {
         final destination = router.destinations[index];
         context.go(destination.route);
       }
 
       return AdaptiveNavigation(
+        title: title,
         key: _navigationRailKey,
         destinations: router.destinations
             .map((e) => NavigationDestination(

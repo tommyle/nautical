@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:nautical/src/shared/extensions.dart';
 
@@ -8,6 +10,7 @@ class AdaptiveNavigation extends StatelessWidget {
       required this.selectedIndex,
       required this.onDestinationSelected,
       required this.child,
+      required this.title,
       this.logo = const SizedBox()});
 
   final List<NavigationDestination> destinations;
@@ -15,12 +18,13 @@ class AdaptiveNavigation extends StatelessWidget {
   final void Function(int index) onDestinationSelected;
   final Widget child;
   final Widget logo;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.isMobile) {
+        if (Platform.isIOS || Platform.isAndroid) {
           return Scaffold(
             body: child,
             bottomNavigationBar: BottomNavigationBar(
@@ -34,6 +38,38 @@ class AdaptiveNavigation extends StatelessWidget {
                   .toList(),
               currentIndex: selectedIndex,
               onTap: onDestinationSelected,
+            ),
+          );
+        } else if (constraints.isMobile) {
+          return Scaffold(
+            appBar: AppBar(title: Text(title)),
+            body: child,
+            drawer: Drawer(
+              width: 230, //MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  logo,
+                  Flexible(
+                    child: NavigationRail(
+                      extended: true,
+                      destinations: destinations
+                          .map((e) => NavigationRailDestination(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 4,
+                                ),
+                                icon: e.icon,
+                                label: Text(e.label),
+                              ))
+                          .toList(),
+                      selectedIndex: selectedIndex,
+                      onDestinationSelected: (int index) {
+                        Navigator.pop(context);
+                        onDestinationSelected(index);
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         } else {
@@ -62,7 +98,11 @@ class AdaptiveNavigation extends StatelessWidget {
                     ),
                   ],
                 ),
-                Expanded(child: child),
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.only(top: 24),
+                  child: child,
+                )),
               ],
             ),
           );

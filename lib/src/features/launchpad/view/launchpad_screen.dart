@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nautical/src/shared/models/projects.dart';
 import 'package:nautical/src/shared/providers/projects_provider.dart';
-import 'package:nautical/src/shared/views/adaptive_scaffold.dart';
 import 'package:nautical/src/shared/views/header.dart';
 import 'project_card.dart';
 
@@ -16,21 +15,17 @@ class LaunchpadScreen extends StatelessWidget {
     final provider = ProjectsProvider();
     final projects = provider.projects;
     return LayoutBuilder(builder: (context, constraints) {
-      return AdaptiveScaffold(
-        constraints: constraints,
-        title: 'Launchpad',
-        body: ListView(
-          shrinkWrap: true,
-          children: [
-            const Header(title: 'Live'),
-            grid(constraints, projects.sublist(0, 3)),
-            const SizedBox(
-              height: 24,
-            ),
-            const Header(title: 'Upcoming'),
-            grid(constraints, projects.sublist(3, 8)),
-          ],
-        ),
+      return ListView(
+        shrinkWrap: true,
+        children: [
+          const Header(title: 'Live'),
+          grid(constraints, projects.sublist(0, 3)),
+          const SizedBox(
+            height: 24,
+          ),
+          const Header(title: 'Upcoming'),
+          grid(constraints, projects.sublist(3, 8)),
+        ],
       );
     });
   }

@@ -23,7 +23,7 @@ packages:
     source: hosted
     version: "0.0.5"
   adaptive_navigation:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: adaptive_navigation
       url: "https://pub.dartlang.org"

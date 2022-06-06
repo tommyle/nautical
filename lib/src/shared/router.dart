@@ -53,6 +53,7 @@ final appRouter = GoRouter(
       pageBuilder: (context, state) => const MaterialPage<void>(
         key: _pageKey,
         child: RootLayout(
+          title: 'Home',
           key: _scaffoldKey,
           currentIndex: 0,
           child: HomeScreen(),
@@ -64,6 +65,7 @@ final appRouter = GoRouter(
       pageBuilder: (context, state) => const MaterialPage<void>(
         key: _pageKey,
         child: RootLayout(
+          title: 'Launchpad',
           key: _scaffoldKey,
           currentIndex: 1,
           child: LaunchpadScreen(),
@@ -75,6 +77,7 @@ final appRouter = GoRouter(
       pageBuilder: (context, state) => const MaterialPage<void>(
         key: _pageKey,
         child: RootLayout(
+          title: 'Projects',
           key: _scaffoldKey,
           currentIndex: 2,
           child: ProjectHomeScreen(),
@@ -86,6 +89,8 @@ final appRouter = GoRouter(
             pageBuilder: (context, state) => MaterialPage<void>(
                   key: state.pageKey,
                   child: RootLayout(
+                    title:
+                        projectsProvider.getProject(state.params['pid']!).name,
                     key: _scaffoldKey,
                     currentIndex: 2,
                     child: ProjectScreen(
@@ -100,6 +105,9 @@ final appRouter = GoRouter(
                 pageBuilder: (context, state) => MaterialPage<void>(
                   key: state.pageKey,
                   child: RootLayout(
+                    title: projectsProvider
+                        .getItem(state.params['pid']!, state.params['id']!)
+                        .name,
                     key: _scaffoldKey,
                     currentIndex: 2,
                     child: ItemScreen(

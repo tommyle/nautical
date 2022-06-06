@@ -22,24 +22,21 @@ class ItemScreen extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       final colors = Theme.of(context).colorScheme;
 
-      return Scaffold(
-        appBar: AppBar(),
-        body: ListView(
-          shrinkWrap: true,
-          children: [
-            constraints.isMobile
-                ? compressedHeader(context, colors, constraints)
-                : fullHeader(context, colors, constraints),
-            const SizedBox(height: 12.0),
-            properties(context, constraints),
-            const Divider(
-              indent: 12,
-              endIndent: 12,
-            ),
-            const SizedBox(height: 12.0),
-            collection(context, constraints),
-          ],
-        ),
+      return ListView(
+        shrinkWrap: true,
+        children: [
+          constraints.isMobile
+              ? compressedHeader(context, colors, constraints)
+              : fullHeader(context, colors, constraints),
+          const SizedBox(height: 12.0),
+          properties(context, constraints),
+          const Divider(
+            indent: 12,
+            endIndent: 12,
+          ),
+          const SizedBox(height: 12.0),
+          collection(context, constraints),
+        ],
       );
     });
   }
@@ -171,7 +168,7 @@ class ItemScreen extends StatelessWidget {
   ) {
     return Row(
       children: [
-        projectImage(constraints),
+        projectImage(context, constraints),
         projectDescription(
           context,
           colors,
@@ -188,7 +185,7 @@ class ItemScreen extends StatelessWidget {
   ) {
     return Column(
       children: [
-        projectImage(constraints),
+        projectImage(context, constraints),
         projectDescription(
           context,
           colors,
@@ -316,7 +313,7 @@ class ItemScreen extends StatelessWidget {
     );
   }
 
-  Container projectImage(BoxConstraints constraints) {
+  Container projectImage(BuildContext context, BoxConstraints constraints) {
     return Container(
       padding: const EdgeInsets.only(
         top: 14,
@@ -324,7 +321,7 @@ class ItemScreen extends StatelessWidget {
         right: 24,
         bottom: 14,
       ),
-      width: constraints.isMobile ? null : 400,
+      width: constraints.isMobile ? MediaQuery.of(context).size.width : 400,
       child: Image.asset(
         item.image,
         fit: BoxFit.fill,
