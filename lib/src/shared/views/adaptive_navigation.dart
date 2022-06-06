@@ -20,8 +20,23 @@ class AdaptiveNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Tablet Layout
-        if (constraints.isDesktop) {
+        if (constraints.isMobile) {
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: BottomNavigationBar(
+              items: destinations
+                  .map(
+                    (d) => BottomNavigationBarItem(
+                      icon: d.icon,
+                      label: d.label,
+                    ),
+                  )
+                  .toList(),
+              currentIndex: selectedIndex,
+              onTap: onDestinationSelected,
+            ),
+          );
+        } else {
           return Scaffold(
             body: Row(
               children: [
@@ -52,22 +67,6 @@ class AdaptiveNavigation extends StatelessWidget {
             ),
           );
         }
-        
-        return Scaffold(
-          body: child,
-          bottomNavigationBar: BottomNavigationBar(
-            items: destinations
-                .map(
-                  (d) => BottomNavigationBarItem(
-                    icon: d.icon,
-                    label: d.label,
-                  ),
-                )
-                .toList(),
-            currentIndex: selectedIndex,
-            onTap: onDestinationSelected,
-          ),
-        );
       },
     );
   }
