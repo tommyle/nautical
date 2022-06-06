@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nautical/src/shared/extensions.dart';
 import 'package:nautical/src/shared/views/views.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class AdaptiveScaffold extends StatelessWidget {
   const AdaptiveScaffold(
@@ -26,7 +25,7 @@ class AdaptiveScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (Platform.isIOS || Platform.isAndroid) {
+        if (UniversalPlatform.isIOS || UniversalPlatform.isAndroid) {
           return Scaffold(
             appBar: AppBar(
               title: Text(title),
@@ -70,7 +69,10 @@ class AdaptiveScaffold extends StatelessWidget {
                                     vertical: 4,
                                   ),
                                   icon: e.icon,
-                                  label: Text(e.label),
+                                  label: Text(
+                                    e.label,
+                                    style: context.titleMedium,
+                                  ),
                                 ))
                             .toList(),
                         selectedIndex: selectedIndex,
@@ -109,7 +111,10 @@ class AdaptiveScaffold extends StatelessWidget {
                                       vertical: 4,
                                     ),
                                     icon: e.icon,
-                                    label: Text(e.label),
+                                    label: Text(
+                                      e.label,
+                                      style: context.titleMedium,
+                                    ),
                                   ))
                               .toList(),
                           selectedIndex: selectedIndex,

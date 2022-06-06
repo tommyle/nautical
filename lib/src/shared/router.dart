@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nautical/src/features/projects/projects.dart';
 import 'package:nautical/src/features/projects/view/item_screen.dart';
 import 'package:nautical/src/shared/providers/projects_provider.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../features/home/home.dart';
 import '../features/launchpad/view/launchpad_screen.dart';
@@ -47,7 +46,8 @@ class NavigationDestination {
   final Widget? child;
 }
 
-final _persistentNavigation = !(Platform.isIOS || Platform.isAndroid);
+final _persistentNavigation =
+    !(UniversalPlatform.isIOS || UniversalPlatform.isAndroid);
 
 final appRouter = GoRouter(
   urlPathStrategy: UrlPathStrategy.path,
