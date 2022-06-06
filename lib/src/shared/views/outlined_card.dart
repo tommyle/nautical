@@ -5,7 +5,7 @@ class OutlinedCard extends StatefulWidget {
     super.key,
     required this.child,
     this.clickable = true,
-    this.borderWidth = 1,
+    this.borderWidth = 0.5,
   });
 
   final Widget child;
