@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nautical/src/shared/extensions.dart';
 import 'package:nautical/src/shared/providers/projects.dart';
+import 'package:nautical/src/shared/views/adaptive_scaffold.dart';
+import 'package:nautical/src/shared/views/header.dart';
 import 'project_card.dart';
 
 class LaunchpadScreen extends StatelessWidget {
@@ -14,37 +16,23 @@ class LaunchpadScreen extends StatelessWidget {
     final provider = ProjectsProvider();
     final projects = provider.projects;
     return LayoutBuilder(builder: (context, constraints) {
-      return Scaffold(
-        primary: false,
-        appBar: AppBar(
-          title: const Text('LAUNCHPAD'),
-          toolbarHeight: kToolbarHeight * 2,
-        ),
+      return AdaptiveScaffold(
+        constraints: constraints,
+        title: 'Launchpad',
         body: ListView(
           shrinkWrap: true,
           children: [
-            sectionHeader(context, 'Live'),
+            const Header(title: 'Live'),
             grid(constraints, projects.sublist(0, 3)),
-            const SizedBox(height: 24,),
-            sectionHeader(context, 'Upcoming'),
+            const SizedBox(
+              height: 24,
+            ),
+            const Header(title: 'Upcoming'),
             grid(constraints, projects.sublist(3, 8)),
           ],
         ),
       );
     });
-  }
-
-  Padding sectionHeader(BuildContext context, String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 0,
-      ),
-      child: Text(
-        title,
-        style: context.headlineSmall,
-      ),
-    );
   }
 
   GridView grid(BoxConstraints constraints, List<Project> projects) {

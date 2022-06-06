@@ -37,7 +37,7 @@ class RootLayout extends StatelessWidget {
         selectedIndex: currentIndex,
         onDestinationSelected: onSelected,
         logo: const Padding(
-          padding: EdgeInsets.only(top: 18),
+          padding: EdgeInsets.only(top: 0),
           child: Logo(),
         ),
         child: Column(
