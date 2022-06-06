@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:nautical/src/shared/extensions.dart';
+import 'package:nautical/src/shared/views/views.dart';
 
 class AdaptiveScaffold extends StatelessWidget {
   const AdaptiveScaffold(
@@ -47,6 +48,7 @@ class AdaptiveScaffold extends StatelessWidget {
             drawer: Drawer(
               width: 230, //MediaQuery.of(context).size.width,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   logo,
                   Flexible(
@@ -68,6 +70,11 @@ class AdaptiveScaffold extends StatelessWidget {
                       },
                     ),
                   ),
+                  const Spacer(),
+                  const Padding(
+                    padding: EdgeInsets.all(24.0),
+                    child: BrightnessToggle(),
+                  ),
                 ],
               ),
             ),
@@ -77,12 +84,13 @@ class AdaptiveScaffold extends StatelessWidget {
             body: Row(
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     logo,
                     Flexible(
                       child: NavigationRail(
                         extended: true,
-                        minExtendedWidth: 180,
+                        minExtendedWidth: 220,
                         destinations: destinations
                             .map((e) => NavigationRailDestination(
                                   padding: const EdgeInsets.symmetric(
@@ -96,13 +104,19 @@ class AdaptiveScaffold extends StatelessWidget {
                         onDestinationSelected: onDestinationSelected,
                       ),
                     ),
+                    const Spacer(),
+                    const Padding(
+                      padding: EdgeInsets.all(24.0),
+                      child: BrightnessToggle(),
+                    ),
                   ],
                 ),
                 Expanded(
-                    child: Padding(
-                  padding: const EdgeInsets.only(top: 24),
-                  child: child,
-                )),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 24),
+                    child: child,
+                  ),
+                ),
               ],
             ),
           );

@@ -4,7 +4,6 @@ import 'package:nautical/src/features/projects/view/trending_projects.dart';
 import 'package:nautical/src/shared/extensions.dart';
 import 'package:nautical/src/shared/models/projects.dart';
 import 'package:nautical/src/shared/router.dart';
-import 'package:nautical/src/shared/views/views.dart';
 
 import 'view.dart';
 
@@ -37,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: context.headlineLarge,
                       ),
                     ),
-                    const BrightnessToggle(),
                   ],
                 ),
               ),

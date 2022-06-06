@@ -6,8 +6,8 @@ class Logo extends StatelessWidget {
   @override
   Widget build(Object context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
+      padding: const EdgeInsets.only(
+        left: 12,
       ),
       height: 80,
       child: Row(
