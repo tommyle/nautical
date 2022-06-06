@@ -56,6 +56,7 @@ final appRouter = GoRouter(
           title: 'Home',
           key: _scaffoldKey,
           currentIndex: 0,
+          isRoot: true,
           child: HomeScreen(),
         ),
       ),
@@ -68,6 +69,7 @@ final appRouter = GoRouter(
           title: 'Launchpad',
           key: _scaffoldKey,
           currentIndex: 1,
+          isRoot: true,
           child: LaunchpadScreen(),
         ),
       ),
@@ -80,6 +82,7 @@ final appRouter = GoRouter(
           title: 'Projects',
           key: _scaffoldKey,
           currentIndex: 2,
+          isRoot: true,
           child: ProjectHomeScreen(),
         ),
       ),
@@ -93,6 +96,7 @@ final appRouter = GoRouter(
                         projectsProvider.getProject(state.params['pid']!).name,
                     key: _scaffoldKey,
                     currentIndex: 2,
+                    isRoot: false,
                     child: ProjectScreen(
                       project:
                           projectsProvider.getProject(state.params['pid']!),
@@ -110,6 +114,7 @@ final appRouter = GoRouter(
                         .name,
                     key: _scaffoldKey,
                     currentIndex: 2,
+                    isRoot: false,
                     child: ItemScreen(
                       project:
                           projectsProvider.getProject(state.params['pid']!),

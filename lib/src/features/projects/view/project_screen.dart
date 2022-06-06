@@ -15,6 +15,7 @@ class ProjectScreen extends StatelessWidget {
       final colors = Theme.of(context).colorScheme;
 
       return ListView(
+        shrinkWrap: true,
         children: [
           constraints.isMobile
               ? compressedHeader(context, colors, constraints)

@@ -22,6 +22,7 @@ class ProjectHomeScreen extends StatelessWidget {
               children: [
                 const Header(title: 'All'),
                 GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   padding: const EdgeInsets.all(15),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -12,49 +12,65 @@ class RootLayout extends StatelessWidget {
     required this.child,
     required this.currentIndex,
     required this.title,
+    required this.isRoot,
   });
 
   final Widget child;
   final int currentIndex;
   final String title;
+  final bool isRoot;
   static const _switcherKey = ValueKey('switcherKey');
   static const _navigationRailKey = ValueKey('navigationRailKey');
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      void onSelected(int index) {
-        final destination = router.destinations[index];
-        context.go(destination.route);
-      }
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        void onSelected(int index) {
+          final destination = router.destinations[index];
+          context.go(destination.route);
+        }
 
-      return AdaptiveScaffold(
-        title: title,
-        key: _navigationRailKey,
-        destinations: router.destinations
-            .map((e) => NavigationDestination(
-                  icon: e.icon,
-                  label: e.label,
-                ))
-            .toList(),
-        selectedIndex: currentIndex,
-        onDestinationSelected: onSelected,
-        logo: const Padding(
-          padding: EdgeInsets.only(top: 0),
-          child: Logo(),
-        ),
-        child: Column(
-          children: [
-            Expanded(
+        if (isRoot) {
+          return AdaptiveScaffold(
+            title: title,
+            key: _navigationRailKey,
+            destinations: router.destinations
+                .map((e) => NavigationDestination(
+                      icon: e.icon,
+                      label: e.label,
+                    ))
+                .toList(),
+            selectedIndex: currentIndex,
+            onDestinationSelected: onSelected,
+            logo: const Padding(
+              padding: EdgeInsets.only(top: 0),
+              child: Logo(),
+            ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: _Switcher(
+                    key: _switcherKey,
+                    child: child,
+                  ),
+                ),
+              ],
+            ),
+          );
+        } else {
+          return Scaffold(
+            appBar: AppBar(title: Text(title)),
+            body: SafeArea(
               child: _Switcher(
                 key: _switcherKey,
                 child: child,
               ),
             ),
-          ],
-        ),
-      );
-    });
+          );
+        }
+      },
+    );
   }
 }
 
