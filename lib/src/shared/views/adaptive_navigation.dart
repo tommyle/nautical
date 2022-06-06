@@ -52,13 +52,20 @@ class AdaptiveNavigation extends StatelessWidget {
             ),
           );
         }
-        // Mobile Layout
+        
         return Scaffold(
           body: child,
-          bottomNavigationBar: NavigationBar(
-            destinations: destinations,
-            selectedIndex: selectedIndex,
-            onDestinationSelected: onDestinationSelected,
+          bottomNavigationBar: BottomNavigationBar(
+            items: destinations
+                .map(
+                  (d) => BottomNavigationBarItem(
+                    icon: d.icon,
+                    label: d.label,
+                  ),
+                )
+                .toList(),
+            currentIndex: selectedIndex,
+            onTap: onDestinationSelected,
           ),
         );
       },
