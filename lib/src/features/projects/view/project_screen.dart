@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../shared/extensions.dart';
-import '../../../shared/providers/projects.dart';
-import '../../../shared/views/views.dart';
+import 'package:nautical/src/shared/extensions.dart';
+import 'package:nautical/src/shared/models/projects.dart';
+import 'package:nautical/src/shared/views/views.dart';
 
 class ProjectScreen extends StatelessWidget {
   const ProjectScreen({required this.project, super.key});
@@ -61,7 +60,8 @@ class ProjectScreen extends StatelessWidget {
                     title: item.name,
                     subtitle: item.description,
                   ),
-                  onTap: () => context.go('/projects/${project.id}/item/${item.id}'),
+                  onTap: () =>
+                      context.go('/projects/${project.id}/item/${item.id}'),
                 );
               },
             ),

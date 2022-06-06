@@ -1,19 +1,7 @@
 import 'dart:math';
 
-import 'package:collection/collection.dart';
 import 'package:faker/faker.dart';
 import 'package:intl/intl.dart';
-
-final List<String> _projects = [
-  'akumu',
-  'boki',
-  'bunnies',
-  'cheebs',
-  'chums',
-  'dragonz',
-  'flower',
-  'quirklings',
-];
 
 class Property {
   final String type;
@@ -136,27 +124,4 @@ class Project {
 
 extension ProjectEx on Project {
   String get formattedDate => DateFormat("MMM dd").format(date);
-}
-
-class ProjectsProvider {
-  List<Project> get projects => _projects.mapIndexed((i, project) {
-        final image =
-            'assets/images/collections/$project/${project}_${i + 1}.png';
-        final name = faker.company.name();
-
-        return Project.generate(
-          i,
-          name,
-          image,
-          project,
-        );
-      }).toList();
-
-  Project getProject(String id) {
-    return projects.firstWhere((p) => p.id == id);
-  }
-
-  Item getItem(String projectId, String itemId) {
-    return getProject(projectId).items.firstWhere((item) => item.id == itemId);
-  }
 }

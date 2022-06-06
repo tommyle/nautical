@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:nautical/src/shared/providers/projects.dart';
-import '../../../shared/extensions.dart';
-import '../../../shared/views/outlined_card.dart';
+import 'package:nautical/src/shared/extensions.dart';
+import 'package:nautical/src/shared/models/projects.dart';
+import 'package:nautical/src/shared/views/outlined_card.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({

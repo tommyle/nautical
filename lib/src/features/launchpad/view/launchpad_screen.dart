@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nautical/src/shared/extensions.dart';
-import 'package:nautical/src/shared/providers/projects.dart';
+import 'package:nautical/src/shared/models/projects.dart';
+import 'package:nautical/src/shared/providers/projects_provider.dart';
 import 'package:nautical/src/shared/views/adaptive_scaffold.dart';
 import 'package:nautical/src/shared/views/header.dart';
 import 'project_card.dart';

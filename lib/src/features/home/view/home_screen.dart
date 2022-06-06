@@ -1,12 +1,12 @@
 import 'package:adaptive_components/adaptive_components.dart';
 import 'package:flutter/material.dart';
-import 'package:nautical/src/features/playlists/view/trending_projects.dart';
+import 'package:nautical/src/features/projects/view/trending_projects.dart';
+import 'package:nautical/src/shared/extensions.dart';
+import 'package:nautical/src/shared/models/projects.dart';
 import 'package:nautical/src/shared/router.dart';
 import 'package:nautical/src/shared/views/adaptive_scaffold.dart';
+import 'package:nautical/src/shared/views/views.dart';
 
-import '../../../shared/extensions.dart';
-import '../../../shared/providers/providers.dart';
-import '../../../shared/views/views.dart';
 import 'view.dart';
 
 class HomeScreen extends StatefulWidget {

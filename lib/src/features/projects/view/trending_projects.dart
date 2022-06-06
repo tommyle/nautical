@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nautical/src/shared/models/projects.dart';
+import 'package:nautical/src/shared/views/image_clipper.dart';
 import 'package:nautical/src/shared/views/link_text.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../shared/providers/projects.dart';
-import '../../../shared/views/image_clipper.dart';
-import '../../../shared/views/views.dart';
+import 'package:nautical/src/shared/views/views.dart';
 
 class TrendingProjects extends StatelessWidget {
   const TrendingProjects(

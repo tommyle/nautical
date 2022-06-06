@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nautical/src/features/playlists/projects.dart';
-import 'package:nautical/src/features/playlists/view/item_screen.dart';
-import 'package:nautical/src/shared/providers/providers.dart';
+import 'package:nautical/src/features/projects/projects.dart';
+import 'package:nautical/src/features/projects/view/item_screen.dart';
+import 'package:nautical/src/shared/providers/projects_provider.dart';
 
 import '../features/home/home.dart';
 import '../features/launchpad/view/launchpad_screen.dart';

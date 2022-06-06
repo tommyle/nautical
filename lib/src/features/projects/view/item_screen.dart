@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nautical/src/shared/extensions.dart';
+import 'package:nautical/src/shared/models/projects.dart';
 import 'package:nautical/src/shared/views/outlined_card.dart';
 import 'package:nautical/src/shared/views/views.dart';
-import '../../../shared/extensions.dart';
-import '../../../shared/providers/projects.dart';
 
 class ItemScreen extends StatelessWidget {
   const ItemScreen({

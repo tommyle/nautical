@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../providers/providers.dart';
+import 'package:nautical/src/shared/providers/theme.dart';
 
 class BrightnessToggle extends StatelessWidget {
   const BrightnessToggle({super.key});
