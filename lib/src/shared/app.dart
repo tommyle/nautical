@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
               return MaterialApp.router(
                 scrollBehavior: AppScrollBehavior(),
                 debugShowCheckedModeBanner: false,
-                title: 'Flutter Demo',
+                title: 'Nautical',
                 theme: theme.light(settings.value.sourceColor),
                 darkTheme: theme.dark(settings.value.sourceColor),
                 themeMode: theme.themeMode(),
