@@ -14,18 +14,22 @@ final List<String> _projects = [
 ];
 
 class ProjectsProvider {
-  List<Project> get projects => _projects.mapIndexed((i, project) {
-        final image =
-            'assets/images/collections/$project/${project}_${i + 1}.png';
-        final name = faker.company.name();
+  late final List<Project> projects;
 
-        return Project.generate(
-          i,
-          name,
-          image,
-          project,
-        );
-      }).toList();
+  ProjectsProvider() {
+    projects = _projects.mapIndexed((i, project) {
+      final image =
+          'assets/images/collections/$project/${project}_${i + 1}.png';
+      final name = faker.company.name();
+
+      return Project.generate(
+        i,
+        name,
+        image,
+        project,
+      );
+    }).toList();
+  }
 
   Project getProject(String id) {
     return projects.firstWhere((p) => p.id == id);

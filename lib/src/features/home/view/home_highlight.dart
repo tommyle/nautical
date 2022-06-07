@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../shared/views/views.dart';
 
@@ -24,7 +23,7 @@ class HomeHighlight extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () => launchUrl(Uri.parse('https://docs.flutter.dev')),
+              onTap: () {},
             ),
           ),
         ),
