@@ -3,8 +3,39 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart' as go;
 import 'package:nautical/src/shared/views/logo.dart';
 
-import '../router.dart' as router;
 import 'adaptive_scaffold.dart';
+
+class NavItem {
+  const NavItem({
+    required this.route,
+    required this.label,
+    required this.icon,
+    this.child,
+  });
+
+  final String route;
+  final String label;
+  final Icon icon;
+  final Widget? child;
+}
+
+const List<NavItem> destinations = [
+  NavItem(
+    label: 'Home',
+    icon: Icon(Icons.store),
+    route: '/',
+  ),
+  NavItem(
+    label: 'Launchpad',
+    icon: Icon(Icons.rocket_launch),
+    route: '/launchpad',
+  ),
+  NavItem(
+    label: 'Projects',
+    icon: Icon(Icons.diamond),
+    route: '/projects',
+  ),
+];
 
 class RootLayout extends StatelessWidget {
   const RootLayout({
@@ -27,7 +58,7 @@ class RootLayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         void onSelected(int index) {
-          final destination = router.destinations[index];
+          final destination = destinations[index];
           context.go(destination.route);
         }
 
@@ -35,7 +66,7 @@ class RootLayout extends StatelessWidget {
           return AdaptiveScaffold(
             title: title,
             key: _navigationRailKey,
-            destinations: router.destinations
+            destinations: destinations
                 .map((e) => NavigationDestination(
                       icon: e.icon,
                       label: e.label,
