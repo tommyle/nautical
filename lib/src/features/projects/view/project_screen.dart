@@ -31,7 +31,7 @@ class ProjectScreen extends StatelessWidget {
               horizontal: 15,
               vertical: 0,
             ),
-            child: Text(
+            child: AdaptiveText(
               'Collection',
               style: context.headlineSmall,
             ),
@@ -113,19 +113,19 @@ class ProjectScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          AdaptiveText(
             project.name,
             style: context.displaySmall!.copyWith(color: colors.onSurface),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 8),
-          Text(
+          AdaptiveText(
             'By ${project.creator}',
             style: context.bodyLarge!.copyWith(),
           ),
           const SizedBox(height: 24),
-          Text(
+          AdaptiveText(
             project.description,
             style: context.bodyLarge!.copyWith(
               color: colors.onSurface.withOpacity(0.8),

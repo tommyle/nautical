@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart' as go;
 import 'package:nautical/src/shared/views/logo.dart';
 import 'package:nautical/src/shared/views/switcher.dart';
+import 'package:nautical/src/shared/views/views.dart';
 
 import 'adaptive_scaffold.dart';
 
@@ -91,7 +92,7 @@ class RootLayout extends StatelessWidget {
           );
         } else {
           return Scaffold(
-            appBar: AppBar(title: Text(title)),
+            appBar: AppBar(title: AdaptiveText(title)),
             body: SafeArea(
               child: Switcher(
                 key: _switcherKey,

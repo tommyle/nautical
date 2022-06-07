@@ -28,7 +28,7 @@ class AdaptiveScaffold extends StatelessWidget {
         if (UniversalPlatform.isIOS || UniversalPlatform.isAndroid) {
           return Scaffold(
             appBar: AppBar(
-              title: Text(title),
+              title: AdaptiveText(title),
               actions: const [BrightnessToggle()],
             ),
             body: CupertinoTabScaffold(
@@ -51,7 +51,7 @@ class AdaptiveScaffold extends StatelessWidget {
           );
         } else if (constraints.isMobile) {
           return Scaffold(
-            appBar: AppBar(title: Text(title)),
+            appBar: AppBar(title: AdaptiveText(title)),
             body: SafeArea(child: child),
             drawer: Drawer(
               width: 230, //MediaQuery.of(context).size.width,

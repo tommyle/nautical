@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nautical/src/shared/extensions.dart';
 import 'package:nautical/src/shared/models/projects.dart';
-
-import '../../../shared/extensions.dart';
-import '../../../shared/views/clickable.dart';
-import '../../../shared/views/image_clipper.dart';
-import '../../../shared/views/outlined_card.dart';
+import 'package:nautical/src/shared/views/image_clipper.dart';
+import 'package:nautical/src/shared/views/outlined_card.dart';
+import 'package:nautical/src/shared/views/views.dart';
 
 class HomeRecent extends StatelessWidget {
   const HomeRecent(
@@ -102,7 +101,7 @@ class HomeRecent extends StatelessWidget {
       children: [
         Padding(
             padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: Text(
+            child: AdaptiveText(
               project.name,
               style: context.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
@@ -113,7 +112,7 @@ class HomeRecent extends StatelessWidget {
             )),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          child: Text(project.description,
+          child: AdaptiveText(project.description,
               overflow: TextOverflow.ellipsis,
               style: context.labelSmall,
               maxLines: 2,
