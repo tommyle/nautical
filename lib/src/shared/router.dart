@@ -50,7 +50,7 @@ final _persistentNavigation =
     !(UniversalPlatform.isIOS || UniversalPlatform.isAndroid);
 
 final appRouter = GoRouter(
-  urlPathStrategy: UrlPathStrategy.path,
+  urlPathStrategy: UrlPathStrategy.hash,
   routes: [
     GoRoute(
       path: '/',
