@@ -14,37 +14,7 @@ const _scaffoldKey = ValueKey('_scaffoldKey');
 
 final projectsProvider = ProjectsProvider();
 
-const List<NavigationDestination> destinations = [
-  NavigationDestination(
-    label: 'Home',
-    icon: Icon(Icons.store),
-    route: '/',
-  ),
-  NavigationDestination(
-    label: 'Launchpad',
-    icon: Icon(Icons.rocket_launch),
-    route: '/launchpad',
-  ),
-  NavigationDestination(
-    label: 'Projects',
-    icon: Icon(Icons.diamond),
-    route: '/projects',
-  ),
-];
 
-class NavigationDestination {
-  const NavigationDestination({
-    required this.route,
-    required this.label,
-    required this.icon,
-    this.child,
-  });
-
-  final String route;
-  final String label;
-  final Icon icon;
-  final Widget? child;
-}
 
 final _persistentNavigation =
     !(UniversalPlatform.isIOS || UniversalPlatform.isAndroid);
