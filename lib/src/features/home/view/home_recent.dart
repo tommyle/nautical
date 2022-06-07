@@ -101,7 +101,7 @@ class HomeRecent extends StatelessWidget {
       children: [
         Padding(
             padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: AdaptiveText(
+            child: Text(
               project.name,
               style: context.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
@@ -112,7 +112,7 @@ class HomeRecent extends StatelessWidget {
             )),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          child: AdaptiveText(project.description,
+          child: Text(project.description,
               overflow: TextOverflow.ellipsis,
               style: context.labelSmall,
               maxLines: 2,

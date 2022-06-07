@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nautical/src/shared/extensions.dart';
-import 'package:nautical/src/shared/views/views.dart';
 
 class Header extends StatelessWidget {
   final String title;
@@ -17,7 +16,7 @@ class Header extends StatelessWidget {
         horizontal: 15,
         vertical: 0,
       ),
-      child: AdaptiveText(
+      child: Text(
         title,
         style: context.headlineSmall,
       ),

@@ -4,7 +4,6 @@ import 'package:nautical/src/features/projects/view/trending_projects.dart';
 import 'package:nautical/src/shared/extensions.dart';
 import 'package:nautical/src/shared/models/projects.dart';
 import 'package:nautical/src/shared/router.dart';
-import 'package:nautical/src/shared/views/views.dart';
 
 import 'view.dart';
 
@@ -32,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: AdaptiveText(
+                      child: Text(
                         'Featured',
                         style: context.headlineLarge,
                       ),
@@ -59,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       horizontal: 15,
                       vertical: 10,
                     ),
-                    child: AdaptiveText(
+                    child: Text(
                       'Recent Drops',
                       style: context.headlineSmall,
                     ),
@@ -83,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(bottom: 8),
-                            child: AdaptiveText(
+                            child: Text(
                               'Trending',
                               style: context.titleLarge,
                             ),

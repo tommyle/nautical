@@ -28,7 +28,9 @@ class AdaptiveScaffold extends StatelessWidget {
         if (UniversalPlatform.isIOS || UniversalPlatform.isAndroid) {
           return Scaffold(
             appBar: AppBar(
-              title: AdaptiveText(title),
+              title: SelectionArea(
+                child: Text(title),
+              ),
               actions: const [BrightnessToggle()],
             ),
             body: CupertinoTabScaffold(
@@ -45,14 +47,22 @@ class AdaptiveScaffold extends StatelessWidget {
                 onTap: onDestinationSelected,
               ),
               tabBuilder: (BuildContext context, int index) {
-                return SafeArea(child: child);
+                return SafeArea(
+                  child: SelectionArea(
+                    child: child,
+                  ),
+                );
               },
             ),
           );
         } else if (constraints.isMobile) {
           return Scaffold(
-            appBar: AppBar(title: AdaptiveText(title)),
-            body: SafeArea(child: child),
+            appBar: AppBar(title: SelectionArea(child: Text(title))),
+            body: SafeArea(
+              child: SelectionArea(
+                child: child,
+              ),
+            ),
             drawer: Drawer(
               width: 230, //MediaQuery.of(context).size.width,
               child: SafeArea(
@@ -131,7 +141,7 @@ class AdaptiveScaffold extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 24),
-                      child: child,
+                      child: SelectionArea(child: child),
                     ),
                   ),
                 ],

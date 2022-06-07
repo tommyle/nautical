@@ -52,7 +52,7 @@ class ItemScreen extends StatelessWidget {
             horizontal: 15,
             vertical: 0,
           ),
-          child: AdaptiveText(
+          child: Text(
             'Properties',
             style: context.headlineSmall,
           ),
@@ -125,7 +125,7 @@ class ItemScreen extends StatelessWidget {
             horizontal: 15,
             vertical: 0,
           ),
-          child: AdaptiveText(
+          child: Text(
             'More from this collection',
             style: context.headlineSmall,
           ),
@@ -209,19 +209,19 @@ class ItemScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          AdaptiveText(
+          Text(
             item.name,
             style: context.headlineLarge!.copyWith(color: colors.onSurface),
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
           ),
           const SizedBox(height: 8),
-          AdaptiveText(
+          Text(
             'By ${project.creator}',
             style: context.bodyLarge!.copyWith(),
           ),
           const SizedBox(height: 24),
-          AdaptiveText(
+          Text(
             item.description,
             style: context.bodyLarge!.copyWith(
               color: colors.onSurface.withOpacity(0.8),
@@ -244,7 +244,7 @@ class ItemScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AdaptiveText(
+                Text(
                   'Current Price',
                   style: context.labelMedium!.copyWith(),
                 ),
@@ -256,7 +256,7 @@ class ItemScreen extends StatelessWidget {
                   children: [
                     const Icon(Icons.diamond),
                     const SizedBox(width: 8),
-                    AdaptiveText(
+                    Text(
                       '${item.price.roundToDouble()} ETH',
                       style: context.headlineSmall!.copyWith(),
                     ),

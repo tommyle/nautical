@@ -20,19 +20,19 @@ class TrendingProjects extends StatelessWidget {
       breakpoint: 1024,
       columns: const [
         DataColumn(
-          label: AdaptiveText('Rank'),
+          label: Text('Rank'),
         ),
         DataColumn(
-          label: AdaptiveText('Project name'),
+          label: Text('Project name'),
         ),
         DataColumn(
-          label: AdaptiveText('When'),
+          label: Text('When'),
         ),
         DataColumn(
-          label: AdaptiveText('Mint Link'),
+          label: Text('Mint Link'),
         ),
         DataColumn(
-          label: AdaptiveText('Description'),
+          label: Text('Description'),
         ),
       ],
       rowBuilder: (_, index) {
@@ -42,7 +42,7 @@ class TrendingProjects extends StatelessWidget {
           index: index,
           cells: [
             DataCell(
-              AdaptiveText('${index + 1}'),
+              Text('${index + 1}'),
             ),
             DataCell(
               Clickable(
@@ -63,7 +63,7 @@ class TrendingProjects extends StatelessWidget {
             DataCell(
               SizedBox(
                 width: 80,
-                child: AdaptiveText(project.formattedDate),
+                child: Text(project.formattedDate),
               ),
             ),
             const DataCell(
@@ -78,7 +78,7 @@ class TrendingProjects extends StatelessWidget {
             DataCell(
               SizedBox(
                 width: 300,
-                child: AdaptiveText(
+                child: Text(
                   project.description,
                   maxLines: 2,
                 ),
@@ -93,12 +93,12 @@ class TrendingProjects extends StatelessWidget {
           leading: ClippedImage(project.image),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: AdaptiveText(
+            child: Text(
               project.name,
               style: context.titleMedium,
             ),
           ),
-          subtitle: AdaptiveText(
+          subtitle: Text(
             '${project.formattedDate} -  ${project.description}',
             style: context.labelMedium,
           ),

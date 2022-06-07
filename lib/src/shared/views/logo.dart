@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nautical/src/shared/views/views.dart';
 
 class Logo extends StatelessWidget {
   const Logo({Key? key}) : super(key: key);
@@ -21,7 +20,7 @@ class Logo extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          const AdaptiveText(
+          const Text(
             "Nautical",
             style: TextStyle(
               fontSize: 30,
