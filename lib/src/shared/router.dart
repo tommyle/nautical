@@ -14,8 +14,6 @@ const _scaffoldKey = ValueKey('_scaffoldKey');
 
 final projectsProvider = ProjectsProvider();
 
-
-
 final _persistentNavigation =
     !(UniversalPlatform.isIOS || UniversalPlatform.isAndroid);
 
@@ -63,37 +61,45 @@ final appRouter = GoRouter(
       routes: [
         GoRoute(
           path: ':pid',
-          pageBuilder: (context, state) => MaterialPage<void>(
-            key: state.pageKey,
-            child: RootLayout(
-              title: projectsProvider.getProject(state.params['pid']!).name,
-              key: _scaffoldKey,
-              currentIndex: 2,
-              isRoot: _persistentNavigation,
-              child: ProjectScreen(
-                project: projectsProvider.getProject(state.params['pid']!),
+          pageBuilder: (context, state) {
+            final project = projectsProvider.getProject(state.params['pid']!);
+
+            return MaterialPage<void>(
+              key: state.pageKey,
+              child: RootLayout(
+                title: project.name,
+                key: _scaffoldKey,
+                currentIndex: 2,
+                isRoot: _persistentNavigation,
+                child: ProjectScreen(
+                  project: project,
+                ),
               ),
-            ),
-          ),
+            );
+          },
           routes: [
             GoRoute(
               path: 'item/:id',
-              pageBuilder: (context, state) => MaterialPage<void>(
-                key: state.pageKey,
-                child: RootLayout(
-                  title: projectsProvider
-                      .getItem(state.params['pid']!, state.params['id']!)
-                      .name,
-                  key: _scaffoldKey,
-                  currentIndex: 2,
-                  isRoot: _persistentNavigation,
-                  child: ItemScreen(
-                    project: projectsProvider.getProject(state.params['pid']!),
-                    item: projectsProvider.getItem(
-                        state.params['pid']!, state.params['id']!),
+              pageBuilder: (context, state) {
+                final project =
+                    projectsProvider.getProject(state.params['pid']!);
+                final item = projectsProvider.getItem(
+                    state.params['pid']!, state.params['id']!);
+
+                return MaterialPage<void>(
+                  key: state.pageKey,
+                  child: RootLayout(
+                    title: item.name,
+                    key: _scaffoldKey,
+                    currentIndex: 2,
+                    isRoot: _persistentNavigation,
+                    child: ItemScreen(
+                      project: project,
+                      item: item,
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),
